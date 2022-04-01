@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Dice Boy Script</title>
+    <title>DiceBoyScripts</title>
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com/">
@@ -49,7 +49,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2">
                         <div class="logo-box">
-                            <a href="index.html" class="logo"><img src="{{ asset('disilab/images/logo9.jpeg')}}" alt="logo"></a>
+                            <a href="{{ url('/') }}" class="logo"><img src="{{ asset('disilab/images/logo9.jpeg')}}" alt="logo"></a>
                             <div class="user-action">
                                 <div class="search-menu-toggle icon-element icon-element-xs shadow-sm mr-1" data-toggle="tooltip" data-placement="top" title="Search">
                                     <i class="la la-search"></i>
@@ -66,10 +66,10 @@
                             <nav class="menu-bar mr-auto">
                                 <ul>
                                     <li>
-                                        <a href="#">Home</a>
+                                        <a href="{{ url('/') }}">Home</a>
                                     </li>
                                     <li class="is-mega-menu">
-                                        <a href="#">About</a>
+                                        <a href="{{ url('/about') }}">About</a>
 
                                     </li>
                            <!--  <li>

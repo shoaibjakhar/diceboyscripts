@@ -94,8 +94,7 @@
                                     <div class="dropdown-divider border-top-gray mb-0"></div>
                                     <div class="dropdown-item-list">
                                         <a class="dropdown-item" href="{{url('addscript')}}"><i class="la la-user mr-2"></i>Profile</a>
-                                        <a class="dropdown-item" href="referrals.html"><i class="la la-user-plus mr-2"></i>Referrals</a>
-                                        <a class="dropdown-item" href="{{url('editprofile')}}"><i class="la la-gear mr-2"></i>Settings</a>
+                                        <a class="dropdown-item" href="{{url('editprofile')}}"><i class="la la-gear mr-2"></i>Profile Settings</a>
                                         <a class="dropdown-item" href="{{url('logout')}}"><i class="la la-power-off mr-2"></i>Log out</a>
                                     </div>
                                 </div>

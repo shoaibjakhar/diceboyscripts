@@ -22,7 +22,7 @@
         						</div>
         						@endif
         						<div class="form-group">
-        							<h3 class="fs-22 pb-3 fw-bold">Join the Dice Boy Script</h3>
+        							<h3 class="fs-22 pb-3 fw-bold">Join the DiceBoyScripts</h3>
         							<div class="divider"><span></span></div>
         							<p class="pt-3">Give us some of your information to get free access to  Dice Boy Script.</p>
         						</div>
@@ -70,7 +70,7 @@
         							@enderror
         							<p class="fs-13 lh-18">Passwords must contain at least 6 characters, including at l.</p>
         						</div><!-- end form-group -->
-        						<div class="form-group">
+        						<!-- <div class="form-group">
         							<div class="d-flex align-items-center">
         								<div class="custom-control custom-checkbox fs-13 mr-4">
         									<input type="checkbox" class="custom-control-input" id="opt-in">
@@ -82,13 +82,13 @@
         								<div class="generic-popover d-none">
         									<p class="pb-2 fs-14">We know you hate spam, and we do too. That’s why we make it easy for you to update your email preferences or unsubscribe at anytime.</p>
         									<p class="fs-14">We never share your email address with third parties for marketing purposes.</p>
-        								</div><!-- end generic-popover -->
+        								</div>
         							</div>
-        						</div><!-- end form-group -->
+        						</div> --><!-- end form-group -->
         						<div class="form-group">
         							<button id="send-message-btn" class="btn theme-btn w-100" type="submit">Sign up <i class="la la-arrow-right icon ml-1"></i></button>
         						</div><!-- end form-group -->
-        						<p class="fs-13 lh-18 pb-3">By clicking “Sign up”, you agree to our <a href="terms-and-conditions.html" class="text-color hover-underline">terms of conditions</a>, <a href="privacy-policy.html" class="text-color hover-underline">privacy policy</a></p>
+        						<!-- <p class="fs-13 lh-18 pb-3">By clicking “Sign up”, you agree to our <a href="terms-and-conditions.html" class="text-color hover-underline">terms of conditions</a>, <a href="privacy-policy.html" class="text-color hover-underline">privacy policy</a></p> -->
                       <!--   <div class="social-icon-box">
                             <div class="pb-3 d-flex align-items-center">
                                 <hr class="flex-grow-1 border-top-gray"><span class="mx-2 text-gray-2 fw-medium text-uppercase fs-14">or</span><hr class="flex-grow-1 border-top-gray">
