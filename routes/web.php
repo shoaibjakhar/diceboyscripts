@@ -17,8 +17,36 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('layout.app');
+Route::prefix('admin')->group(function () {
+
+	Route::get('profile',"Admin\ProfileController@edit");
+	Route::post('profile',"Admin\ProfileController@update");
+ //   	Route::get('profile', function () {
+ //    	return view('Admin.Profile.edit_profile');
+	// });
+
+	Route::get('login', function () {
+    	return view('auth.admin_login');
+	});
+
+	Route::get('all-users',"Admin\UserController@index");
+	Route::get('edit-user/{id}',"Admin\UserController@edit");
+	Route::get('delete-user/{id}',"Admin\UserController@destroy");
+
+	Route::get('all-scripts',"Admin\ScriptController@index");
+	Route::get('edit-script/{id}',"Admin\ScriptController@edit");
+	Route::get('delete-script/{id}',"Admin\ScriptController@destroy");
+	Route::get('pending-scripts',"Admin\ScriptController@pendingScript");
+	Route::get('approved-scripts',"Admin\ScriptController@approvedScript");
+	Route::get('declined-scripts',"Admin\ScriptController@declinedScript");
+
+	Route::get('approve-script-status/{id}',"Admin\ScriptController@approveScriptStatus");
+	Route::get('decline-script-status/{id}',"Admin\ScriptController@declineScriptStatus");
+
+});
+
+// Route::get('admin', function () {
+//     return view('Admin.layout');
 // });
 
 //   >>>>>>>>>>>>user Route<<<<<<<<<<<<<<<
@@ -42,6 +70,11 @@ Route::post('addpost',[PostController::class,'add_post']);
 
 Route::post('orderBy',[PostController::class,'selectBy']);
 Route::get('selectorder',[PostController::class,'selectorder']);
+
 Route::get('questionDetail/{id}',[PostController::class,'question_detail']);
 Route::get('comment',[CommentController::class,'comment']);
 Route::post('comment',[CommentController::class,'save_comment']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
