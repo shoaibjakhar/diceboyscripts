@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\User;
 use DB;
+use App\Models\Comment;
+use Illuminate\Support\Facades\URL;
 
 class PostController extends Controller
 {
@@ -18,7 +20,6 @@ class PostController extends Controller
 		->orderBy('created_at','DESC')
 		->get();
 		return view('frontend/index')->with('posts',$data);
-    // dd($data);
 	// $posts = User::find(4)->posts;
 	// $user = User::find(4);
 	// dd($posts);
@@ -106,6 +107,7 @@ class PostController extends Controller
 
 		foreach($data as $key => $post)
 		{
+			$url=URL::to('questionDetail'); 
 			$text.='<div class="questions-snippet">
 			<div class="media media-card media--card align-items-center">
 			<div class="votes">
@@ -119,7 +121,7 @@ class PostController extends Controller
 			</div>
 			</div>
 			<div class="media-body">
-			<h5><a href="#">'.$post->title.'</a></h5>
+			<h5><a href='.$url.'>'.$post->title.'</a></h5>
 			<p class="fs-10 pt-3">'.$post->description.'</p>
 			'.$post->script.'
 			<small class="meta">
@@ -133,45 +135,20 @@ class PostController extends Controller
 
 		echo $text;
 	}
-
-	public function selectorder()
-	{ 
-
+	public function question_detail($q_id)
+	{
+		DB::enableQueryLog();
 		$data = DB::table('posts')
 		->join('users', 'posts.user_id', '=', 'users.id')
+		->where('posts.id',$q_id)
 		->select('posts.*', 'users.name', 'users.email')
-		->orderBy('id', 'DESC')
+
+		->orderBy('created_at','DESC')
 		->get();
+	
+		$comment = Comment::where('question_id',$q_id)->get();
 
-		$text='';
-
-		foreach($data as $key => $post)
-		{
-			$text.='<div class="questions-snippet">
-			<div class="media media-card media--card align-items-center">
-			<div class="votes">
-			<div class="vote-block d-flex align-items-center justify-content-between" title="Votes">
-			<span class="vote-counts">0</span>
-			<span class="vote-icon"></span>
-			</div>
-			<div class="answer-block d-flex align-items-center justify-content-between" title="Comments">
-			<span class="vote-counts">0</span>
-			<span class="answer-icon"></span>
-			</div>
-			</div>
-			<div class="media-body">
-			<h5><a href="#">'.$post->title.'</a></h5>
-			<p class="fs-10 pt-3">'.$post->description.'</p>
-			'.$post->script.'
-			<small class="meta">
-			<span class="pr-1">'.$post->created_at.'</span>
-			<a href="#" class="author">'.$post->name.'</a>
-			</small>
-			</div>
-			</div>
-			</div>';
-		}
-
-		echo $text;
+		return view('frontend/question_detail_page')->with('posts',$data)->with('comments',$comment);
 	}
+
 }

@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('disilab/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{ asset('disilab/css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{ asset('disilab/css/jquery-te-1.4.0.css')}}">
+     <link rel="stylesheet" href="{{ asset('disilab/css/upvotejs.min.css')}}">
     <link rel="stylesheet" href="{{ asset('disilab/css/selectize.css')}}">
     <link rel="stylesheet" href="{{ asset('disilab/css/style.css')}}">
     <!-- end inject -->

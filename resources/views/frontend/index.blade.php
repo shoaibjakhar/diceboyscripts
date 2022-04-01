@@ -69,7 +69,7 @@
                                             </div>
                                         </div>
                                         <div class="media-body">
-                                            <h5><a href="#">{{$post->title}}</a></h5>
+                                            <h5><a href="{{url('questionDetail/'.$post->id)}}">{{$post->title}}</a></h5>
                                              <p class="fs-10 pt-3 script-description">{{$post->description}}</p>
                                               {!!$post->script!!}
                                             <small class="meta">

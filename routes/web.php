@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,6 @@ Route::post('addpost',[PostController::class,'add_post']);
 
 Route::post('orderBy',[PostController::class,'selectBy']);
 Route::get('selectorder',[PostController::class,'selectorder']);
+Route::get('questionDetail/{id}',[PostController::class,'question_detail']);
+Route::get('comment',[CommentController::class,'comment']);
+Route::post('comment',[CommentController::class,'save_comment']);

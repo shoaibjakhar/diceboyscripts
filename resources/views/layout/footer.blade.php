@@ -214,6 +214,10 @@
         <script src="{{ asset('disilab/js/jquery.multi-file.min.js')}}"></script>
         <script src="{{ asset('disilab/js/selectize.min.js')}}"></script>
         <script src="{{ asset('disilab/js/main.js')}}"></script>
+        <script src="{{ asset('disilab/js/jquery-te-1.4.0.min.js')}}"></script>
+        <script src="{{ asset('disilab/js/upvote.vanilla.js')}}"></script>
+        <script src="{{ asset('disilab/js/upvote-script.js')}}"></script>
+
 
         <script>
             $(document).ready(function(){
