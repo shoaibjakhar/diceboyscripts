@@ -23,6 +23,7 @@ use App\Http\Controllers\CommentController;
 
 //   >>>>>>>>>>>>user Route<<<<<<<<<<<<<<<
 
+Route::get('about',[PostController::class,'about']);
 Route::get('login',[UsersController::class,'login_view']);
 Route::post('userlogin',[UsersController::class,'login']);
 Route::get('signup',[UsersController::class,'signup_view']);

@@ -282,10 +282,10 @@
                                                           @enderror
                                                   </div><!-- end form-group -->
                                                   <div class="form-group">
-                                                          <div class="custom-control custom-checkbox fs-14">
+                                                          <!-- <div class="custom-control custom-checkbox fs-14">
                                                                  <input type="checkbox" class="custom-control-input" id="agreeCheckBox" data-com.bitwarden.browser.user-edited="yes">
                                                                  <label class="custom-control-label custom--control-label" for="agreeCheckBox">By posting, you agreed to the <a href="terms-and-conditions.html" class="text-color hover-underline">Terms of Service </a> and <a href="privacy-policy.html" class="text-color hover-underline">Privacy Policy.</a></label>
-                                                         </div>
+                                                         </div> -->
                                                  </div>
                                                  <div class="form-group mb-0">
                                                   <button class="btn theme-btn" type="submit">Publish Your Post</button>

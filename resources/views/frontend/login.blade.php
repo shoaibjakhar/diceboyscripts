@@ -58,13 +58,13 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
 
-                            <div class="form-group d-flex align-items-center justify-content-between">
+                            <!-- <div class="form-group d-flex align-items-center justify-content-between">
                                 <div class="custom-control custom-checkbox fs-14">
                                     <input type="checkbox" class="custom-control-input" id="rememberMe">
                                     <label class="custom-control-label custom--control-label" for="rememberMe">Remember me!</label>
                                 </div>
                                 <a href="recover-password.html" class="btn-text fs-14 hover-underline fw-regular">Forgot Password?</a>
-                            </div><!-- end form-group -->
+                            </div> --><!-- end form-group -->
                             <div class="form-group">
                                 <button id="send-message-btn" class="btn theme-btn w-100" type="submit">Log in <i class="la la-arrow-right icon ml-1"></i></button>
                             </div><!-- end form-group -->

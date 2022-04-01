@@ -30,6 +30,12 @@ class PostController extends Controller
 
 		
 	}
+
+	public function about()
+	{
+		
+		return view('frontend/about');
+	}
 	public function userpost()
 	{
 		$posts=Post::where('user_id',session('user_id'))->get();
