@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use DB;
+use Hash;
 
 class UsersController extends Controller
 {
@@ -18,7 +19,7 @@ class UsersController extends Controller
 	}
 	public function signup(Request $request)
 	{
-
+		dd(Hash::make($request->password));
 
 		$validated = $request->validate([
 			'username' => 'required',
