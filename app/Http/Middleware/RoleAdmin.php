@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class RoleAdmin
 {
@@ -16,6 +17,14 @@ class RoleAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (!empty(auth()->user()) && auth()->user()->role == 'admin') {
+                return $next($request);
+        }
+        else if(empty(auth()->user()))
+        {
+            return redirect('admin/login');
+        }
+
+        return response("Please Login as Admin Then You can Access Admin Panel");
     }
 }

@@ -23,6 +23,19 @@ class ScriptController extends Controller
         return view('Admin.Script.edit_script',["post" => $post]);
     }
 
+    public function update(Request $request)
+    {
+        $post = Post::find($request->id);
+
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->script = $request->script;
+        $post->update();
+
+        Session::flash("message","Script Updated Successfully");
+        return redirect('admin/all-scripts');
+    }
+
     public function destroy($id)
     {
         $findPost = Post::find($id)->delete();

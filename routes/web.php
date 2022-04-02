@@ -19,22 +19,23 @@ use App\Http\Controllers\CommentController;
 
 Route::prefix('admin')->group(function () {
 
-	Route::get('profile',"Admin\ProfileController@edit");
-	Route::post('profile',"Admin\ProfileController@update");
- //   	Route::get('profile', function () {
- //    	return view('Admin.Profile.edit_profile');
-	// });
-
 	Route::get('login', function () {
     	return view('auth.admin_login');
 	});
 
+Route::middleware([App\Http\Middleware\RoleAdmin::class])->group(function(){
+
+	Route::get('profile',"Admin\ProfileController@edit");
+	Route::post('profile',"Admin\ProfileController@update");
+
 	Route::get('all-users',"Admin\UserController@index");
 	Route::get('edit-user/{id}',"Admin\UserController@edit");
+	Route::post('update-user',"Admin\UserController@update");
 	Route::get('delete-user/{id}',"Admin\UserController@destroy");
 
 	Route::get('all-scripts',"Admin\ScriptController@index");
 	Route::get('edit-script/{id}',"Admin\ScriptController@edit");
+	Route::post('update-script',"Admin\ScriptController@update");
 	Route::get('delete-script/{id}',"Admin\ScriptController@destroy");
 	Route::get('pending-scripts',"Admin\ScriptController@pendingScript");
 	Route::get('approved-scripts',"Admin\ScriptController@approvedScript");
@@ -43,6 +44,7 @@ Route::prefix('admin')->group(function () {
 	Route::get('approve-script-status/{id}',"Admin\ScriptController@approveScriptStatus");
 	Route::get('decline-script-status/{id}',"Admin\ScriptController@declineScriptStatus");
 
+	});
 });
 
 // Route::get('admin', function () {

@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('profile_photo_path');
+            $table->string('profile_photo_path')->nullable();
             $table->string('avatar')->default('avatar.png');
-            $table->enum('role',['admin','user']);
-            $table->string('status')->default(0);
+            $table->enum('role',['admin','user'])->default('user');
+            $table->enum('status',["peding", "approved"])->default("pending");
             $table->string('active_status')->default(0);
             $table->rememberToken();
             $table->timestamps();

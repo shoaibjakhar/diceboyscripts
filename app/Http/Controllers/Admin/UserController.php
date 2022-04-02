@@ -18,7 +18,31 @@ class UserController extends Controller
 
     public function edit($id)
     {
-       return view('Admin.User.edit_user');
+        $user = User::find($id);
+
+        return view('Admin.User.edit_user',["user" => $user]);
+    }
+
+    public function update(Request $request)
+    {
+        $user = User::find($request->id);
+
+        if($request->file('image'))
+        {
+             $name = $request->file('image')->getClientOriginalName();
+             $user->avatar = $name;
+             $path = $request->file('image')->store('public/images/profile');
+             $user->profile_photo_path = $path;
+        }
+
+        $user->name = $request->username;
+        $user->email = $request->email;
+        $user->role = $request->role;
+        $user->status = $request->status;
+        $user->update();
+
+        Session::flash("message","User Profile Updated Successfully");
+        return redirect()->back();
     }
 
     public function destroy($id)

@@ -1,4 +1,8 @@
-@include('layout/profile_header')
+@if(session()->has('user_id'))
+   @include('layout/profile_header')
+@else 
+    @include('layout/header')
+@endif
 
     <div class="ad-banner mb-4 mx-auto" style="width: 93%; height: 200px">
     	<span class="ad-text">1350x500</span>

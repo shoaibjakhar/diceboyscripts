@@ -8,12 +8,14 @@
         <div class="filters pb-40px d-flex flex-wrap align-items-center justify-content-between">
             <h3 class="fs-22 fw-medium mr-0">Edit Script</h3>
         </div><!-- end filters -->
-        <form action="#" class="row">
+        <form action="{{URL::to('admin/update-script')}}" class="row" method="post">
+            @csrf
             <div class="col-lg-12">
                 <div class="card card-item">
                     <div class="card-body">
                         <div class="form-group">
                             <label class="fs-14 text-black fw-medium lh-20">Title</label>
+                            <input type="hidden" name="id" value="{{$post->id}}">
                             <input type="text" name="title" value="{{$post->title}}" class="form-control form--control fs-14" placeholder="Your Post Title">
                         </div><!-- end form-group -->
                         <div class="form-group">
