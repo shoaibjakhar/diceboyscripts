@@ -25,46 +25,46 @@
                             <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
                                 <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                 <!-- <li><a href="terms-and-conditions.html">Terms of Service</a></li>
-                                <li><a href="privacy-policy.html">Cookie Policy</a></li> -->
-                            </ul>
-                        </div><!-- end footer-item -->
-                    </div><!-- end col-lg-3 -->
-                    <div class="col-lg-3 responsive-column-half">
-                        <div class="footer-item">
-                            <h3 class="fs-18 fw-bold pb-2 text-white">Help</h3>
-                            <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
-                                <!-- <li><a href="faq.html">Knowledge Base</a></li> -->
-                                <li><a href="contact.html">Support</a></li>
-                            </ul>
-                        </div><!-- end footer-item -->
-                    </div><!-- end col-lg-3 -->
-                    <div class="col-lg-3 responsive-column-half">
-                        <div class="footer-item">
-                            <h3 class="fs-18 fw-bold pb-2 text-white">Connect with us</h3>
-                            <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
-                                <li><a href="#"><i class="la la-facebook mr-1"></i> Facebook</a></li>
-                                <li><a href="#"><i class="la la-twitter mr-1"></i> Twitter</a></li>
-                                <li><a href="#"><i class="la la-linkedin mr-1"></i> LinkedIn</a></li>
-                                <li><a href="#"><i class="la la-instagram mr-1"></i> Instagram</a></li>
-                            </ul>
-                        </div><!-- end footer-item -->
-                    </div><!-- end col-lg-3 -->
-                </div><!-- end row -->
-            </div><!-- end container -->
-            <hr class="border-top-gray my-5">
-            <div class="container">
-                <div class="row align-items-center pb-4 copyright-wrap">
-                    <div class="col-lg-6">
-                        <a href="index.html" class="d-inline-block">
-                            <img src="images/logo-white.png" alt="footer logo" class="footer-logo">
-                        </a>
-                    </div><!-- end col-lg-6 -->
-                    <div class="col-lg-6">
-                        <p class="copyright-desc text-right fs-14">Copyright &copy; 2022 <a href="https://diceboyscripts.com/">DiceBoyScripts</a></p>
-                    </div><!-- end col-lg-6 -->
-                </div><!-- end row -->
-            </div><!-- end container -->
-        </section><!-- end footer-area -->
+                                    <li><a href="privacy-policy.html">Cookie Policy</a></li> -->
+                                </ul>
+                            </div><!-- end footer-item -->
+                        </div><!-- end col-lg-3 -->
+                        <div class="col-lg-3 responsive-column-half">
+                            <div class="footer-item">
+                                <h3 class="fs-18 fw-bold pb-2 text-white">Help</h3>
+                                <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
+                                    <!-- <li><a href="faq.html">Knowledge Base</a></li> -->
+                                    <li><a href="contact.html">Support</a></li>
+                                </ul>
+                            </div><!-- end footer-item -->
+                        </div><!-- end col-lg-3 -->
+                        <div class="col-lg-3 responsive-column-half">
+                            <div class="footer-item">
+                                <h3 class="fs-18 fw-bold pb-2 text-white">Connect with us</h3>
+                                <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
+                                    <li><a href="#"><i class="la la-facebook mr-1"></i> Facebook</a></li>
+                                    <li><a href="#"><i class="la la-twitter mr-1"></i> Twitter</a></li>
+                                    <li><a href="#"><i class="la la-linkedin mr-1"></i> LinkedIn</a></li>
+                                    <li><a href="#"><i class="la la-instagram mr-1"></i> Instagram</a></li>
+                                </ul>
+                            </div><!-- end footer-item -->
+                        </div><!-- end col-lg-3 -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+                <hr class="border-top-gray my-5">
+                <div class="container">
+                    <div class="row align-items-center pb-4 copyright-wrap">
+                        <div class="col-lg-6">
+                            <a href="index.html" class="d-inline-block">
+                                <img src="images/logo-white.png" alt="footer logo" class="footer-logo">
+                            </a>
+                        </div><!-- end col-lg-6 -->
+                        <div class="col-lg-6">
+                            <p class="copyright-desc text-right fs-14">Copyright &copy; 2022 <a href="https://diceboyscripts.com/">DiceBoyScripts</a></p>
+                        </div><!-- end col-lg-6 -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </section><!-- end footer-area -->
 <!-- ================================
           END FOOTER AREA
           ================================= -->
@@ -222,16 +222,50 @@
         <script>
             $(document).ready(function(){
                 $('.orderBy').change(function() {
-                var showByorder=$('.orderBy').val();
-                $.ajax({
-                   type:'POST',
-                   url:'{{url('orderBy')}}',
-                   data:{_token: "{{ csrf_token() }}", showByorder:showByorder },
-                   success:function(data) {
+                    var showByorder=$('.orderBy').val();
+                    $.ajax({
+                       type:'POST',
+                       url:'{{url('orderBy')}}',
+                       data:{_token: "{{ csrf_token() }}", showByorder:showByorder },
+                       success:function(data) {
                          $("#question").html(data);
-                   }
-               });
-            });
+                     }
+                 });
+                });
+
+                $("#vote a.upvote").click(function() {
+                    
+                    saveRating();
+                });
+
+                 $("#vote a.downvote").click(function() {
+                   saveRating();
+                });
+
+
+                function saveRating()
+                {
+                     
+                    
+                    
+                     var current_total_vote = parseInt($('#current_total_vote').text());
+                     var user_pre_rating = parseInt($("#user_pre_rating").val());
+                     var total_pre_rating = parseInt($("#total_pre_rating").val());
+
+                     var rating= current_total_vote  - total_pre_rating +(user_pre_rating);
+
+                     var script_id = $("input[name='script_id']").val();
+                     var script_user_id = $("input[name='script_user_id']").val();
+
+                    $.ajax({
+                       type:'POST',
+                       url:'{{url('rating')}}',
+                       data:{_token: "{{ csrf_token() }}", rating:rating ,script_id :script_id , script_user_id : script_user_id },
+                       success:function(data) {
+
+                    }
+                });
+                }
             });
 
         </script>

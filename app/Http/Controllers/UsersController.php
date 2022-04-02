@@ -19,7 +19,7 @@ class UsersController extends Controller
 	}
 	public function signup(Request $request)
 	{
-		dd(Hash::make($request->password));
+		// dd(Hash::make($request->password));
 
 		$validated = $request->validate([
 			'username' => 'required',
