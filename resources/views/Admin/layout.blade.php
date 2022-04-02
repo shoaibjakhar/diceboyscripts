@@ -194,7 +194,7 @@
                                 <a class="nav-link" id="user-profile-tab"  href="{{url('admin/profile')}}" role="tab" aria-controls="user-profile" aria-selected="true">Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="user-profile-tab"  href="#" role="tab" aria-controls="user-profile" aria-selected="true">Dashboard</a>
+                                <a class="nav-link" id="user-profile-tab"  href="{{url('admin/dashboard')}}" role="tab" aria-controls="user-profile" aria-selected="true">Dashboard</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="user-profile-tab"  href="{{url('admin/all-users')}}" role="tab" aria-controls="user-profile" aria-selected="true">All Users</a>

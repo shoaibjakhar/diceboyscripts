@@ -25,6 +25,8 @@ Route::prefix('admin')->group(function () {
 
 Route::middleware([App\Http\Middleware\RoleAdmin::class])->group(function(){
 
+	Route::get('dashboard',"Admin\DashboardController@dashboard");
+
 	Route::get('profile',"Admin\ProfileController@edit");
 	Route::post('profile',"Admin\ProfileController@update");
 

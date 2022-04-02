@@ -19,8 +19,6 @@ class UsersController extends Controller
 	}
 	public function signup(Request $request)
 	{
-		dd(Hash::make($request->password));
-
 		$validated = $request->validate([
 			'username' => 'required',
 			'email' => 'required|unique:users|max:255',
