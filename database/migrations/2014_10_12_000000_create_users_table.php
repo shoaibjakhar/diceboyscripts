@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path')->nullable();
             $table->string('avatar')->default('avatar.png');
             $table->enum('role',['admin','user'])->default('user');
-            $table->enum('status',["peding", "approved"])->default("pending");
+            $table->enum('status',["pending", "approved"])->default("pending");
             $table->string('active_status')->default(0);
             $table->rememberToken();
             $table->timestamps();

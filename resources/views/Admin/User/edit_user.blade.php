@@ -88,8 +88,8 @@
                                                              type="text" 
                                                              name="status">
                                                                 <option value="">Select Status</option>
-                                                                <option value="1" @if($user->status == "1") selected @endif>Active</option>
-                                                                <option value="0" @if($user->status == "0") selected @endif>In-Active</option>
+                                                                <option value="approved" @if($user->status == "approved") selected @endif>Approved</option>
+                                                                <option value="pending" @if($user->status == "pending") selected @endif>Pending</option>
                                                              </select>
                                                              @error('username')
                                                              <div class="alert alert-danger">{{ $message }}</div>
