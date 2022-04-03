@@ -25,12 +25,12 @@
                                                                 <small class="meta d-block lh-20 pb-2">
                                                                         <span>United States, member since 11 years ago</span>
                                                                 </small>
-                                                                <div class="stats fs-14 fw-medium d-flex align-items-center lh-18">
+                                                                <!-- <div class="stats fs-14 fw-medium d-flex align-items-center lh-18">
                                                                         <span class="text-black pr-2" title="Reputation">224,110</span>
                                                                         <span class="pr-2 d-inline-flex align-items-center" title="Gold"><span class="ball ml-1 gold"></span>16</span>
                                                                         <span class="pr-2 d-inline-flex align-items-center" title="Silver"><span class="ball ml-1 silver"></span>93</span>
                                                                         <span class="pr-2 d-inline-flex align-items-center" title="Bronze"><span class="ball ml-1"></span>136</span>
-                                                                </div>
+                                                                </div> -->
                                                         </div>
                                                 </div><!-- end media -->
                                         </div><!-- end hero-content -->
@@ -90,8 +90,8 @@
                                                                                                         </svg>
                                                                                                 </div>
                                                                                                 <div class="media-body">
-                                                                                                        <h5 class="fw-medium">1,979</h5>
-                                                                                                        <p class="fs-15">Answers</p>
+                                                                                                        <h5 class="fw-medium">4.5/5.0</h5>
+                                                                                                        <p class="fs-15">Ratings</p>
                                                                                                 </div>
                                                                                         </div>
                                                                                 </div><!-- end col-lg-4 -->
@@ -133,11 +133,11 @@
                                                                                                 </div>
                                                                                                 <div class="media-body">
                                                                                                         <h5 class="fw-medium">11</h5>
-                                                                                                        <p class="fs-15">Questions</p>
+                                                                                                        <p class="fs-15">Comments</p>
                                                                                                 </div>
                                                                                         </div>
                                                                                 </div><!-- end col-lg-4 -->
-                                                                                <div class="col-lg-4 responsive-column-half">
+                                                                                <!-- <div class="col-lg-4 responsive-column-half">
                                                                                         <div class="media media-card align-items-center shadow-none border border-gray p-3">
                                                                                                 <div class="icon-element icon-element-sm mr-3 bg-3">
                                                                                                         <svg class="svg-icon-color-white" viewBox="0 0 24 24" width="25" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +149,7 @@
                                                                                                         <p class="fs-15">People reached</p>
                                                                                                 </div>
                                                                                         </div>
-                                                                                </div><!-- end col-lg-4 -->
+                                                                                </div> --><!-- end col-lg-4 -->
                                                                         </div><!-- end row -->
                                                                 </div><!-- end user-panel -->
                                                                 <div class="user-panel mb-40px">
@@ -174,7 +174,7 @@
                                                                                     <div class="media media-card media--card align-items-center shadow-none rounded-0 mb-0 bg-transparent">
                                                                                            <div class="votes">
                                                                                                   <div class="vote-block d-flex align-items-center justify-content-between" title="Votes">
-                                                                                                         <span class="vote-counts">6475</span>
+                                                                                                         <span class="vote-counts">4.5</span>
                                                                                                          <span class="vote-icon"></span>
                                                                                                  </div>
                                                                                                  <div class="answer-block d-flex align-items-center justify-content-between" title="Answers">

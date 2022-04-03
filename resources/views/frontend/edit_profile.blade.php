@@ -265,8 +265,8 @@
                                 </div><!-- end col-lg-6 -->
                                 <div class="col-lg-6 responsive-column-half">
                                     <div class="icon-box pt-3">
-                                        <span class="fs-20 fw-bold text-color-2">110</span>
-                                        <p class="fs-14">Total Likes</p>
+                                        <span class="fs-20 fw-bold text-color-2">4.5/5</span>
+                                        <p class="fs-14">Total Rating</p>
                                     </div><!-- end icon-box -->
                                 </div><!-- end col-lg-6 -->
                                 <div class="col-lg-6 responsive-column-half">

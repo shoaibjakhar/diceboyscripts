@@ -19,11 +19,11 @@ class UserSeeder extends Seeder
         \App\Models\User::factory(10)->create();
 
         User::create([
-            'name' => "Ahsan",
-            'email' => "abc@gmail.com",
+            'name' => "User",
+            'email' => "user@gmail.com",
             'email_verified_at' => now(),
             'password' => "123456", // password
-            'role' => "admin",
+            'role' => "user",
             'remember_token' => Str::random(10),
             "profile_photo_path" => "public/images/profile/IBhKQbFZJQZyTMNnKamyYIH6cgEHCqNOSFynLqCN.jpg",
         ]);

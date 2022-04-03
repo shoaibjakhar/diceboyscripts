@@ -90,7 +90,7 @@
                     </div><!-- end tab-pane -->
                 </div>
             </div><!-- end col-lg-9 -->
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                 <div class="sidebar">
                     <div class="card card-item p-4">
                         <div class="card-body">
@@ -101,35 +101,35 @@
                                     <div class="icon-box pt-3">
                                         <span class="fs-20 fw-bold text-color">980k</span>
                                         <p class="fs-14">Questions</p>
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-6 -->
+                                    </div>
+                                </div>
                                 <div class="col-lg-6 responsive-column-half">
                                     <div class="icon-box pt-3">
                                         <span class="fs-20 fw-bold text-color-2">610k</span>
                                         <p class="fs-14">Answers</p>
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-6 -->
+                                    </div>
+                                </div>
                                 <div class="col-lg-6 responsive-column-half">
                                     <div class="icon-box pt-3">
                                         <span class="fs-20 fw-bold text-color-3">650k</span>
                                         <p class="fs-14">Answer accepted</p>
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-6 -->
+                                    </div>
+                                </div>
                                 <div class="col-lg-6 responsive-column-half">
                                     <div class="icon-box pt-3">
                                         <span class="fs-20 fw-bold text-color-4">320k</span>
                                         <p class="fs-14">Users</p>
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-6 -->
+                                    </div>
+                                </div>
                                 <div class="col-lg-12 pt-3">
                                     <p class="fs-14">To get answer of question <a href="signup.html" class="text-color hover-underline">Join<i class="la la-arrow-right ml-1"></i></a></p>
                                 </div>
-                            </div><!-- end row -->
+                            </div>
                         </div>
-                    </div><!-- end card -->
+                    </div>
 
-                </div><!-- end sidebar -->
-            </div><!-- end col-lg-3 -->
+                </div>
+            </div> -->
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end user-details-area -->

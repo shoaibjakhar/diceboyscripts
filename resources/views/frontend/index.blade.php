@@ -60,7 +60,7 @@
                                     <div class="media media-card media--card align-items-center">
                                         <div class="votes">
                                             <div class="vote-block d-flex align-items-center justify-content-between" title="Votes">
-                                                <span class="vote-counts">0</span>
+                                                <span class="vote-counts">4.5 </span>
                                                 <span class="vote-icon"></span>
                                             </div>
                                             <div class="answer-block d-flex align-items-center justify-content-between" title="Comments">
