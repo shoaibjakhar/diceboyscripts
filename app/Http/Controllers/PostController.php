@@ -7,6 +7,7 @@ use App\Models\post;
 use App\Models\User;
 use DB;
 use App\Models\Comment;
+use App\Models\Rating;
 use Illuminate\Support\Facades\URL;
 
 class PostController extends Controller
@@ -153,8 +154,11 @@ class PostController extends Controller
 		->get();
 	
 		$comment = Comment::where('question_id',$q_id)->get();
-
-		return view('frontend/question_detail_page')->with('posts',$data)->with('comments',$comment);
+		$rating = Rating::where('script_id',$q_id)->where('rating_user_id',session('user_id'))->pluck('rating')->first();
+		if (empty($rating)) {
+  			$rating=0;	
+		}
+		return view('frontend/question_detail_page')->with('posts',$data)->with('comments',$comment)->with('rating',$rating);
 	}
 
 }

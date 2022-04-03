@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\RatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,7 @@ Route::get('selectorder',[PostController::class,'selectorder']);
 Route::get('questionDetail/{id}',[PostController::class,'question_detail']);
 Route::get('comment',[CommentController::class,'comment']);
 Route::post('comment',[CommentController::class,'save_comment']);
+Route::post('rating',[RatingController::class,'index']);
 
 Auth::routes();
 
