@@ -37,7 +37,6 @@ class UserController extends Controller
 
         $user->name = $request->username;
         $user->email = $request->email;
-        $user->role = $request->role;
         $user->status = $request->status;
         $user->update();
 
