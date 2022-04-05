@@ -12,4 +12,9 @@ class Comment extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'commented_user_id', 'id');
+    }
+
 }

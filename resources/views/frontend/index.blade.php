@@ -25,8 +25,8 @@
                     <div class="col-lg-2">
                      <div class="sidebar pb-45px position-sticky top-0 mt-2">
                          <ul class="generic-list-item generic-list-item-highlight fs-15">
-                           <li class="lh-26 active"><a href="home-2.html"><i class="la la-home mr-1 text-black"></i> Home</a></li>
-                           <li class="lh-26"><a href="category.html"><i class="la la-file-text mr-1 text-black"></i> All Topics</a></li>
+                           <li class="lh-26 active"><a href="{{url('/')}}"><i class="la la-home mr-1 text-black"></i> Home</a></li>
+                           <li class="lh-26"><a href="#"><i class="la la-file-text mr-1 text-black"></i> All Topics</a></li>
                        </ul>
                    </div><!-- end sidebar -->
                </div><!-- end col-lg-2 -->
@@ -60,21 +60,26 @@
                                     <div class="media media-card media--card align-items-center">
                                         <div class="votes">
                                             <div class="vote-block d-flex align-items-center justify-content-between" title="Votes">
-                                                <span class="vote-counts">0</span>
-                                                <span class="vote-icon"></span>
+                                                @if($stars[$key] != 0)
+                                                    <span class="vote-counts">{{$stars[$key]}}</span>
+                                                    <span><i class="la la-star" style="color:orange;"></i></span>
+                                                @else
+                                                    <span class="vote-counts">{{$stars[$key]}}</span>
+                                                    <span><i class="la la-star"></i></span>
+                                                @endif
                                             </div>
                                             <div class="answer-block d-flex align-items-center justify-content-between" title="Comments">
                                                 <span class="vote-counts">0</span>
-                                                <span class="answer-icon"></span>
+                                                <span><i class="la la-comments"></i></span>
                                             </div>
                                         </div>
                                         <div class="media-body">
-                                            <h5><a href="{{url('questionDetail/'.$post->id)}}">{{$post->title}}</a></h5>
+                                            <h5><a href="{{url('script/'.$post->id)}}">{{$post->title}}</a></h5>
                                              <p class="fs-10 pt-3 script-description">{{$post->description}}</p>
                                               {!!$post->script!!}
                                             <small class="meta">
                                                 <span class="pr-1">{{$post->created_at}}</span>
-                                                <a href="#" class="author">{{$post->name}}</a>
+                                                <a class="author">{{$post->users->name}}</a>
                                             </small>
                                         </div>
                                     </div>

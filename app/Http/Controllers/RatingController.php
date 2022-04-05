@@ -27,6 +27,22 @@ class RatingController extends Controller
  			$rating->rating = $data['rating'];
  			$rating->save();
  		}
+ 	}
 
- 	}   
+ 		public function rating($script_id, $script_user_id, $star)
+ 		{
+ 			$rating_user_id= Session('user_id');
+
+ 			$insertRating = Rating::create([
+ 				"script_id" => $script_id,
+ 				"script_user_id" => $script_user_id,
+ 				"rating_user_id" => $rating_user_id,
+ 				"rating" => $star,
+ 			]);
+ 
+ 			session()->flash('success','Your Rating Added Successfuly');
+ 			return redirect()->back();
+ 		}
+
+ 	
 }

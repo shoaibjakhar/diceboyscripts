@@ -25,7 +25,7 @@ class CommentController extends Controller
 		$data = $request->input();
 		$data['commented_user_id'] = Session('user_id');
 		$comment = new Comment();
-		$comment->question_id = $data['question_id'];
+		$comment->question_id = $data['script_id'];
 		$comment->commented_user_id = $data['commented_user_id'];
 		$comment->comment_to_user_id = $data['comment_to_user_id'];
 		$comment->comment = $data['comment'];

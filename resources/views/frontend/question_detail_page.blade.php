@@ -22,7 +22,7 @@
                           <strong>{{ $message }}</strong>
                       </div>
                       @endif   
-                      <h5 class="fs-20"><a href="question-details.html">{{$posts[0]->title}}</a></h5>
+                      <h5 class="fs-20"><a>{{$posts[0]->title}}</a></h5>
                            <!--  <div class="meta d-flex flex-wrap align-items-center fs-13 lh-20 py-1">
                                 <div class="pr-3">
                                     <span>Asked</span>
@@ -46,24 +46,6 @@
                     </div><!-- end media -->
                 </div><!-- end question-highlight -->
                 <div class="question d-flex">
-                	<div class="votes votes-styled w-auto">
-                        <input type="hidden" name="user_pre_rating" id="user_pre_rating" value="{{$rating}}">
-                        <input type="hidden" name="total_pre_rating" id="total_pre_rating" value="8">
-                        <div id="vote" class="upvotejs">
-                            @if($rating ==1)
-                            <a class="upvote upvote-on" data-toggle="tooltip" data-placement="right" title="This question is useful"></a>
-                            @else
-                            <a class="upvote upvote" data-toggle="tooltip" data-placement="right" title="This question is useful"></a>
-                            @endif
-                            <span style="" class="count" id="current_total_vote">8</span>
-                            @if($rating ==-1)
-                            <a class="downvote downvote-on" data-toggle="tooltip" data-placement="right" title="This question is not useful"></a>
-                            @else
-                            <a class="downvote" data-toggle="tooltip" data-placement="right" title="This question is not useful"></a>
-                            @endif
-                            <a class="star" data-toggle="tooltip" data-placement="right" title="Bookmark this question."></a>
-                        </div>
-                    </div><!-- end votes -->
                     <div class="question-post-body-wrap flex-grow-1">
                       <div class="question-post-body">
                          <p>{{$posts[0]->description}}</p>
@@ -73,41 +55,88 @@
 
                  </div><!-- end question-post-body-wrap -->
              </div><!-- end question -->
+            @if(Session::has('user_id'))
              <div class="subheader d-flex align-items-center justify-content-between">
                <div class="subheader-title">
                   <h3 class="fs-16">{{count($comments)}} Comments</h3>
               </div><!-- end subheader-title -->
               <div class="subheader-actions d-flex align-items-center lh-1">
-                  <label class="fs-13 fw-regular mr-1 mb-0">Order by</label>
+                  <label class="fs-13 fw-regular mr-1 mb-0">Rating</label>
                   <div class="w-100px">
-                      <select class="select-container orderBy" name="orderBy">
-                        <option value="1" selected="selected">Newest </option>
-                        <option value="2">Oldest</option>
-                        <option value="3">A to Z</option>
-                        <option value="4">Z to A </option>
-                        <option value="5">High Rating</option>
-                        <option value="6">Low Rating </option>
-                    </select>
+
+                  <?php 
+                        switch ($rating) {
+                           case 1: ?>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                               <a><i class="la la-star" style="color:gray;"></i></a>
+                              <a><i class="la la-star" style="color:gray;"></i></a>
+                              <a><i class="la la-star" style="color:gray;"></i></a>
+                              <a><i class="la la-star" style="color:gray;"></i></a>
+                              <?php 
+                              break;
+
+                              case 2: ?>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                               <a><i class="la la-star" style="color:orange;"></i></a>
+                              <a><i class="la la-star" style="color:gray;"></i></a>
+                              <a><i class="la la-star" style="color:gray;"></i></a>
+                              <a><i class="la la-star" style="color:gray;"></i></a>
+                              <?php 
+                              break;
+
+                              case 3: ?>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                               <a><i class="la la-star" style="color:orange;"></i></a>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                              <a><i class="la la-star" style="color:gray;"></i></a>
+                              <a><i class="la la-star" style="color:gray;"></i></a>
+                              <?php 
+                              break;
+
+                              case 4: ?>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                               <a><i class="la la-star" style="color:orange;"></i></a>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                              <a><i class="la la-star" style="color:gray;"></i></a>
+                              <?php 
+                              break;
+
+                              case 5: ?>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                               <a><i class="la la-star" style="color:orange;"></i></a>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                              <a><i class="la la-star" style="color:orange;"></i></a>
+                              <?php 
+                              break;
+                           default: ?>
+                              <a href="../rating/{{$posts[0]->id}}/{{$posts[0]->user_id}}/1"><i class="la la-star" style="color:gray;"></i></a>
+                              <a href="../rating/{{$posts[0]->id}}/{{$posts[0]->user_id}}/2"><i class="la la-star" style="color:gray"></i></a>
+                              <a href="../rating/{{$posts[0]->id}}/{{$posts[0]->user_id}}/3"><i class="la la-star" style="color:gray"></i></a>
+                              <a href="../rating/{{$posts[0]->id}}/{{$posts[0]->user_id}}/4"><i class="la la-star" style="color:gray"></i></a>
+                              <a href="../rating/{{$posts[0]->id}}/{{$posts[0]->user_id}}/5"><i class="la la-star" style="color:gray"></i></a>
+                              <?php 
+                              break;
+                        }
+                     ?>
+                     
+                      
+                      
                 </div>
             </div><!-- end subheader-actions -->
         </div><!-- end subheader -->
+
         <div class="answer-wrap d-flex">
-           <div class="votes votes-styled w-auto">
-              <div id="vote2" class="upvotejs">
-                 <a class="upvote upvote-on" data-toggle="tooltip" data-placement="right" title="This question is useful"></a>
-                 <span class="count">2</span>
-                 <a class="downvote" data-toggle="tooltip" data-placement="right" title="This question is not useful"></a>
-                 <a class="star check star-on" data-toggle="tooltip" data-placement="right" title="The question owner accepted this answer"></a>
-             </div>
-         </div><!-- end votes -->
+           
          <div class="answer-body-wrap flex-grow-1">
           <div class="answer-body">
 
              @if(count($comments)>0)
              @foreach($comments as $key => $comment)
-             <pre class="code-block custom-scrollbar-styled"><code>{!! $comment->comment !!}
+                <h6>{{$comment->user->name}}</h6>
+                <p>{{$comment->comment}}</p>
 
-             </code></pre>
              @endforeach
              @endif
          </div>
@@ -123,6 +152,7 @@
                      @csrf
                      <input type="hidden" name="script_id" value="{{$posts[0]->id}}">
                      <input type="hidden" name="script_user_id" value="{{$posts[0]->user_id}}">
+                     <input type="hidden" name="comment_to_user_id" value="{{$posts[0]->id}}">
                      <div class="col-lg-12">
                         <h4 class="fs-16 pb-2">Leave a Comment</h4>
                         <div class="divider mb-2"><span></span></div>
@@ -146,6 +176,13 @@
 </div><!-- end comments-wrap -->
 </div><!-- end answer-body-wrap -->
 </div><!-- end answer-wrap -->
+@else
+   <div class="subheader d-flex align-items-center justify-content-between">
+               <div class="subheader-title">
+                  <a href="{{url('login')}}"><button class="btn btn-primary">Login To View Comments</button></a>
+              </div><!-- end subheader-title -->
+        </div><!-- end subheader -->
+@endif
 </div><!-- end question-main-bar -->
 </div><!-- end col-lg-9 -->
 <div class="col-lg-3">
