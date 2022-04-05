@@ -18,7 +18,8 @@ class PostController extends Controller
 		$data = Post::with('users')
 				->with('rating')
 				->orderBy("id", "DESC")
-				->get();
+				->paginate(10)
+				;
 
 		$stars = [];
 		foreach ($data as $key => $value) {
@@ -135,11 +136,56 @@ class PostController extends Controller
 
 		}
 
+		$ratings = Post::with('users')
+				->with('rating')
+				->orderBy($colum, $order)
+				->get();
+
+		$stars = [];
+		foreach ($ratings as $key => $value) {
+
+			$sum_one_star = 0;
+			$sum_two_star = 0;
+			$sum_three_star = 0;
+			$sum_four_star = 0;
+			$sum_five_star = 0;
+			$score = 0;
+			$total_score = 0;
+			$average = 0;
+			foreach ($value['rating'] as $key => $star) {
+
+				if($star->rating == 1){
+					$sum_one_star += 1;
+				}
+				else if($star->rating == 2){
+					$sum_two_star += 1;
+				}
+				else if($star->rating == 3){
+					$sum_three_star += 1;
+				}
+				else if($star->rating == 4){
+					$sum_four_star += 1;
+				}
+				else if($star->rating == 5){
+					$sum_five_star += 1;
+				}
+					
+			}
+
+			$total_score += $sum_one_star * 1 + $sum_two_star * 2 + $sum_three_star * 3 + $sum_four_star * 4 + $sum_five_star * 5;
+			$score += $sum_one_star + $sum_two_star + $sum_three_star + $sum_four_star + $sum_five_star;
+
+			if($total_score != 0 && $score != 0){
+				$average = ($total_score/$score);
+			}
+				array_push($stars, intval($average));
+			}
+
 		$data = DB::table('posts')
 		->join('users', 'posts.user_id', '=', 'users.id')
 		->select('posts.*', 'users.name', 'users.email')
 		->orderBy($colum,$order)
-		->get();
+		->paginate(10);
 
 		$text='';
 
@@ -150,12 +196,12 @@ class PostController extends Controller
 			<div class="media media-card media--card align-items-center">
 			<div class="votes">
 			<div class="vote-block d-flex align-items-center justify-content-between" title="Votes">
-			<span class="vote-counts">0</span>
-			<span class="vote-icon"></span>
+			<span class="vote-counts">'.$stars[$key].'</span>
+			<span class="la la-star" style="color:orange"></span>
 			</div>
 			<div class="answer-block d-flex align-items-center justify-content-between" title="Comments">
 			<span class="vote-counts">0</span>
-			<span class="answer-icon"></span>
+			<span class="la la-comments"></span>
 			</div>
 			</div>
 			<div class="media-body">

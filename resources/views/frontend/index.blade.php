@@ -5,7 +5,11 @@
 @else 
     @include('layout/header')
 @endif
-
+<style type="text/css">
+    .w-5{
+        width: 20px;
+    }
+</style>
 <!--======================================
         START HERO AREA
         ======================================-->
@@ -43,7 +47,8 @@
                             <div class="filters d-flex align-items-center justify-content-between pb-4">
                                 <h3 class="fs-17 fw-medium">All Scripts</h3>
                                 <div class="filter-option-box w-20">
-                                    <select class="select-container orderBy" name="orderBy">
+                                    <form method="post" id="order_by" onsubmit="return submitForm()">
+                                    <select id="order_by_select" class="select-container orderBy" name="orderBy">
                                         <option value="1" selected="selected">Newest </option>
                                         <option value="2">Oldest</option>
                                         <option value="3">A to Z</option>
@@ -51,6 +56,7 @@
                                         <option value="5">High Rating</option>
                                         <option value="6">Low Rating </option>
                                     </select>
+                                </form>
                                 </div><!-- end filter-option-box -->
                             </div><!-- end filters -->
                             <div class="question-main-bar">
@@ -90,37 +96,9 @@
                                 </div>
                                 <div class="pager d-flex flex-wrap align-items-center justify-content-between pt-30px">
                                     <div>
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination generic-pagination pr-1">
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#" aria-label="Previous">
-                                                        <span aria-hidden="true"><i class="la la-arrow-left"></i></span>
-                                                        <span class="sr-only">Previous</span>
-                                                    </a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#" aria-label="Next">
-                                                        <span aria-hidden="true"><i class="la la-arrow-right"></i></span>
-                                                        <span class="sr-only">Next</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                        <p class="fs-13 pt-3">Showing 1-15 results of 50,577 Scripts</p>
-                                    </div>
-                                    <div class="filter-option-box w-20">
-                                        <select class="select-container">
-                                            <option value="10">10 per page</option>
-                                            <option selected="" value="15">15 per page</option>
-                                            <option value="20">20 per page</option>
-                                            <option value="30">30 per page</option>
-                                            <option value="40">40 per page</option>
-                                            <option value="50">50 per page</option>
-                                        </select>
+                                        {{$posts->links()}}
+                                        
+                                        <!-- <p class="fs-13 pt-3">Showing 1-15 results of 50,577 Scripts</p> -->
                                     </div>
                                 </div>
                             </div><!-- end question-main-bar -->

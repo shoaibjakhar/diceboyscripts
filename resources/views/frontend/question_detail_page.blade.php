@@ -2,6 +2,17 @@
    @include('layout/profile_header')
 @else 
     @include('layout/header')
+    <style type="text/css">
+       .question-blur {
+         filter: blur(8px);
+         -webkit-filter: blur(8px);}
+      .subheader{
+         filter: blur(8px);
+         -webkit-filter: blur(8px);}
+         .answer-wrap{
+         filter: blur(8px);
+         -webkit-filter: blur(8px);}
+    </style>
 @endif
 
 <div class="ad-banner mb-4 mx-auto" style="width: 93%; height: 200px">
@@ -45,17 +56,21 @@
                         </div>
                     </div><!-- end media -->
                 </div><!-- end question-highlight -->
+
                 <div class="question d-flex">
                     <div class="question-post-body-wrap flex-grow-1">
                       <div class="question-post-body">
                          <p>{{$posts[0]->description}}</p>
+                         <div class="question-blur">
+                            
                          {!!$posts[0]->script!!}
+                         </div>
 
                      </div><!-- end question-post-body -->
 
                  </div><!-- end question-post-body-wrap -->
              </div><!-- end question -->
-            @if(Session::has('user_id'))
+
              <div class="subheader d-flex align-items-center justify-content-between">
                <div class="subheader-title">
                   <h3 class="fs-16">{{count($comments)}} Comments</h3>
@@ -176,13 +191,8 @@
 </div><!-- end comments-wrap -->
 </div><!-- end answer-body-wrap -->
 </div><!-- end answer-wrap -->
-@else
-   <div class="subheader d-flex align-items-center justify-content-between">
-               <div class="subheader-title">
-                  <a href="{{url('login')}}"><button class="btn btn-primary">Login To View Comments</button></a>
-              </div><!-- end subheader-title -->
-        </div><!-- end subheader -->
-@endif
+
+
 </div><!-- end question-main-bar -->
 </div><!-- end col-lg-9 -->
 <div class="col-lg-3">
