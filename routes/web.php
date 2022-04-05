@@ -62,25 +62,31 @@ Route::post('userlogin',[UsersController::class,'login']);
 Route::get('signup',[UsersController::class,'signup_view']);
 Route::post('usersignup',[UsersController::class,'signup']);
 // Route::get('index',[UsersController::class,'index']);
-Route::get('editprofile',[UsersController::class,'edit_profile']);
-Route::get('logout',[UsersController::class,'logout']);
-Route::post('updateprofile',[UsersController::class,'update_profile']);
-Route::post('updateemail',[UsersController::class,'update_email']);
-Route::post('changepassword',[UsersController::class,'update_password']);
+
 
 
 Route::get('/',[PostController::class,'index']);
-Route::get('addscript',[PostController::class,'userpost']);
-Route::post('addpost',[PostController::class,'add_post']);
 
 Route::post('orderBy',[PostController::class,'selectBy']);
 Route::get('selectorder',[PostController::class,'selectorder']);
+Route::get('script/{id}',[PostController::class,'scriptDetail']);
 
-Route::get('questionDetail/{id}',[PostController::class,'question_detail']);
-Route::get('comment',[CommentController::class,'comment']);
-Route::post('comment',[CommentController::class,'save_comment']);
-Route::post('rating',[RatingController::class,'index']);
+Route::middleware([App\Http\Middleware\RoleUser::class])->group(function(){
+	
+	Route::get('editprofile',[UsersController::class,'edit_profile']);
+	Route::get('logout',[UsersController::class,'logout']);
+	Route::post('updateprofile',[UsersController::class,'update_profile']);
+	Route::post('updateemail',[UsersController::class,'update_email']);
+	Route::post('changepassword',[UsersController::class,'update_password']);
 
+	Route::get('rating/{script_id}/{script_user_id}/{star}',[RatingController::class,'rating']);
+
+	Route::get('addscript',[PostController::class,'userpost']);
+	Route::post('addpost',[PostController::class,'add_post']);
+
+	Route::post('comment',[CommentController::class,'save_comment']);
+	Route::post('rating',[RatingController::class,'index']);
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

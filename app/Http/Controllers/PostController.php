@@ -14,27 +14,59 @@ class PostController extends Controller
 {
 	public function index()
 	{
-		DB::enableQueryLog();
-		$data = DB::table('posts')
-		->join('users', 'posts.user_id', '=', 'users.id')
-		->select('posts.*', 'users.name', 'users.email')
-		->orderBy('created_at','DESC')
-		->get();
-		return view('frontend/index')->with('posts',$data);
-	// $posts = User::find(4)->posts;
-	// $user = User::find(4);
-	// dd($posts);
-	// dd($user);
-	//dd(DB::getQueryLog());
-		//$posts=Post::all();
-	//print_r($posts);
-
 		
+		$data = Post::with('users')
+				->with('rating')
+				->orderBy("id", "DESC")
+				->get();
+
+		$stars = [];
+		foreach ($data as $key => $value) {
+
+			$sum_one_star = 0;
+			$sum_two_star = 0;
+			$sum_three_star = 0;
+			$sum_four_star = 0;
+			$sum_five_star = 0;
+			$score = 0;
+			$total_score = 0;
+			$average = 0;
+			foreach ($value['rating'] as $key => $star) {
+
+				if($star->rating == 1){
+					$sum_one_star += 1;
+				}
+				else if($star->rating == 2){
+					$sum_two_star += 1;
+				}
+				else if($star->rating == 3){
+					$sum_three_star += 1;
+				}
+				else if($star->rating == 4){
+					$sum_four_star += 1;
+				}
+				else if($star->rating == 5){
+					$sum_five_star += 1;
+				}
+					
+			}
+
+			$total_score += $sum_one_star * 1 + $sum_two_star * 2 + $sum_three_star * 3 + $sum_four_star * 4 + $sum_five_star * 5;
+			$score += $sum_one_star + $sum_two_star + $sum_three_star + $sum_four_star + $sum_five_star;
+
+			if($total_score != 0 && $score != 0){
+				$average = ($total_score/$score);
+			}
+				array_push($stars, intval($average));
+			}
+
+		return view('frontend/index')
+			->with('posts',$data)
+			->with('stars',$stars);
 	}
 
 	public function about()
 	{
-		
 		return view('frontend/about');
 	}
 	public function userpost()
@@ -63,8 +95,7 @@ class PostController extends Controller
 	}
 
 	public function selectBy(Request $request)
-	{ 
-
+	{
 		// Newest
 		// Oldest
 		// A to Z
@@ -142,7 +173,7 @@ class PostController extends Controller
 
 		echo $text;
 	}
-	public function question_detail($q_id)
+	public function scriptDetail($q_id)
 	{
 		DB::enableQueryLog();
 		$data = DB::table('posts')
@@ -153,7 +184,9 @@ class PostController extends Controller
 		->orderBy('created_at','DESC')
 		->get();
 	
-		$comment = Comment::where('question_id',$q_id)->get();
+		$comment = Comment::where('question_id',$q_id)->with('user')
+			->orderBy('id', "DESC")
+			->get();
 		$rating = Rating::where('script_id',$q_id)->where('rating_user_id',session('user_id'))->pluck('rating')->first();
 		if (empty($rating)) {
   			$rating=0;	

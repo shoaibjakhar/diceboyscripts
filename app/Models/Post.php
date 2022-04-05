@@ -49,4 +49,19 @@ class Post extends Authenticatable
         return $this->belongsTo(USER::class, 'user_id');
     }
 
+    public function users()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+
+    public function rating()
+    {
+        return $this->hasMany('App\Models\Rating', 'script_id', 'id');
+    }
+
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Comment', 'question_id', 'id');
+    }  
+
 }
