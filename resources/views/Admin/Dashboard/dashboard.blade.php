@@ -14,9 +14,7 @@
         <div class="row">
             <div class="col-lg-3 responsive-column-half">
                 <div class="media media-card p-3">
-                    <a class="media-img d-inline-block flex-shrink-0">
-                        <img src="images/company-logo.png" alt="company logo">
-                    </a>
+                    
                     <div class="media-body">
                         <h5 class="fs-16 fw-medium"><a href="{{url('admin/all-users')}}">Users</a></h5>                        <p class="fw-medium fs-15 text-black-50 lh-18">{{$count['users']}}</p>
                     </div><!-- end media-body -->
@@ -26,9 +24,7 @@
             
             <div class="col-lg-3 responsive-column-half">
                 <div class="media media-card p-3">
-                    <a class="media-img d-inline-block flex-shrink-0">
-                        <img src="images/company-logo3.jpg" alt="company logo">
-                    </a>
+                    
                     <div class="media-body">
                         <h5 class="fs-16 fw-medium"><a href="{{url('admin/all-scripts')}}">Scripts</a></h5>
                         <p class="fw-medium fs-15 text-black-50 lh-18">{{$count['scripts']}}</p>
@@ -37,9 +33,7 @@
             </div><!-- end col-lg-3 -->
             <div class="col-lg-3 responsive-column-half">
                 <div class="media media-card p-3">
-                    <a class="media-img d-inline-block flex-shrink-0">
-                        <img src="images/company-logo4.png" alt="company logo">
-                    </a>
+                    
                     <div class="media-body">
                         <h5 class="fs-16 fw-medium"><a href="{{url('admin/pending-scripts')}}">Pending Scripts</a></h5>
                         <p class="fw-medium fs-15 text-black-50 lh-18">{{$count['pendingScripts']}}</p>
@@ -49,9 +43,7 @@
 
             <div class="col-lg-3 responsive-column-half">
                 <div class="media media-card p-3">
-                    <a class="media-img d-inline-block flex-shrink-0">
-                        <img src="images/company-logo4.png" alt="company logo">
-                    </a>
+                    
                     <div class="media-body">
                         <h5 class="fs-16 fw-medium"><a href="{{url('admin/approved-scripts')}}">Approved Scripts</a></h5>
                         <p class="fw-medium fs-15 text-black-50 lh-18">{{$count['approvedScripts']}}</p>
@@ -61,9 +53,7 @@
 
             <div class="col-lg-3 responsive-column-half">
                 <div class="media media-card p-3">
-                    <a class="media-img d-inline-block flex-shrink-0">
-                        <img src="images/company-logo4.png" alt="company logo">
-                    </a>
+                    
                     <div class="media-body">
                         <h5 class="fs-16 fw-medium"><a href="{{url('admin/declined-scripts')}}">Declined Scripts</a></h5>
                         <p class="fw-medium fs-15 text-black-50 lh-18">{{$count['declinedScripts']}}</p>
@@ -73,9 +63,7 @@
 
             <div class="col-lg-3 responsive-column-half">
                 <div class="media media-card p-3">
-                    <a class="media-img d-inline-block flex-shrink-0">
-                        <img src="images/company-logo4.png" alt="company logo">
-                    </a>
+                    
                     <div class="media-body">
                         <h5 class="fs-16 fw-medium"><a>Comments</a></h5>
                         <p class="fw-medium fs-15 text-black-50 lh-18">{{$count['comments']}}</p>

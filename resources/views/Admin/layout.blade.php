@@ -99,7 +99,10 @@
                                         <a class="dropdown-item" href="{{url('admin/profile')}}"><i class="la la-user mr-2"></i>Profile</a>
                                         <!-- <a class="dropdown-item" href="referrals.html"><i class="la la-user-plus mr-2"></i>Referrals</a>
                                         <a class="dropdown-item" href="{{url('editprofile')}}"><i class="la la-gear mr-2"></i>Settings</a> -->
-                                        <a class="dropdown-item" href="{{url('logout')}}"><i class="la la-power-off mr-2"></i>Log out</a>
+                                        <form action="{{URL::to('logout')}}" method="post">
+                                            @csrf
+                                        <a class="dropdown-item"><i class="la la-power-off mr-2"></i><button type="submit" style="background-color: white;border: none;">Logout</button></a>
+                                        </form>
                                     </div>
                                 </div>
                             </li>

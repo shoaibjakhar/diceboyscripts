@@ -61,6 +61,9 @@
                     <div class="question-post-body-wrap flex-grow-1">
                       <div class="question-post-body">
                          <p>{{$posts[0]->description}}</p>
+                         @if(!Session::has('user_id'))
+                         <center><a href="{{url('login')}}"><button class="btn btn-primary">Login To View Script</button></a></center>
+                         @endif
                          <div class="question-blur">
                             
                          {!!$posts[0]->script!!}

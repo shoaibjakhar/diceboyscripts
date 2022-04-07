@@ -77,7 +77,7 @@
 
                                             </div>
                                             <div class="answer-block d-flex align-items-center justify-content-between" title="Comments">
-                                                <span class="vote-counts">0</span>
+                                                <span class="vote-counts">{{$comments[$key]}}</span>
                                                 <span><i class="la la-comments"></i></span>
                                             </div>
                                         </div>

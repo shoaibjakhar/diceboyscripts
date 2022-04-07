@@ -9,6 +9,7 @@ use DB;
 use App\Models\Comment;
 use App\Models\Rating;
 use Illuminate\Support\Facades\URL;
+use Session;
 
 class PostController extends Controller
 {
@@ -17,13 +18,15 @@ class PostController extends Controller
 		
 		$data = Post::with('users')
 				->with('rating')
+				->with('comment')
 				->orderBy("id", "DESC")
-				->paginate(10)
+				->paginate(25)
 				;
 
+		$comments = [];
 		$stars = [];
 		foreach ($data as $key => $value) {
-
+			array_push($comments,count($value->comment));
 			$sum_one_star = 0;
 			$sum_two_star = 0;
 			$sum_three_star = 0;
@@ -63,6 +66,7 @@ class PostController extends Controller
 
 		return view('frontend/index')
 			->with('posts',$data)
+			->with('comments',$comments)
 			->with('stars',$stars);
 	}
 
@@ -72,9 +76,56 @@ class PostController extends Controller
 	}
 	public function userpost()
 	{
-		$posts=Post::where('user_id',session('user_id'))->get();
+		$posts = Post::where('user_id',session('user_id'))->with('comment')->get();
 
-		return view('frontend/add_script')->with('posts',$posts);
+		$count_comments = Comment::where("commented_user_id",session('user_id'))->count();
+
+		$comments = [];
+		$stars = [];
+		foreach ($posts as $key => $value) {
+			array_push($comments,count($value->comment));
+			$sum_one_star = 0;
+			$sum_two_star = 0;
+			$sum_three_star = 0;
+			$sum_four_star = 0;
+			$sum_five_star = 0;
+			$score = 0;
+			$total_score = 0;
+			$average = 0;
+			foreach ($value['rating'] as $key => $star) {
+
+				if($star->rating == 1){
+					$sum_one_star += 1;
+				}
+				else if($star->rating == 2){
+					$sum_two_star += 1;
+				}
+				else if($star->rating == 3){
+					$sum_three_star += 1;
+				}
+				else if($star->rating == 4){
+					$sum_four_star += 1;
+				}
+				else if($star->rating == 5){
+					$sum_five_star += 1;
+				}
+					
+			}
+
+			$total_score += $sum_one_star * 1 + $sum_two_star * 2 + $sum_three_star * 3 + $sum_four_star * 4 + $sum_five_star * 5;
+			$score += $sum_one_star + $sum_two_star + $sum_three_star + $sum_four_star + $sum_five_star;
+
+			if($total_score != 0 && $score != 0){
+				$average = ($total_score/$score);
+			}
+				array_push($stars, intval($average));
+			}
+
+		return view('frontend/add_script')
+				->with('posts',$posts)
+				->with('count_comments',$count_comments)
+				->with('comments',$comments)
+				->with('stars',$stars);
 	}
 	public function add_post(Request $request)
 	{
@@ -239,5 +290,33 @@ class PostController extends Controller
 		}
 		return view('frontend/question_detail_page')->with('posts',$data)->with('comments',$comment)->with('rating',$rating);
 	}
+
+	public function edit($id)
+    {
+        $post = Post::find($id);
+
+        return view('frontend.edit_script',["post" => $post]);
+    }
+
+    public function update(Request $request)
+    {
+        $post = Post::find($request->id);
+
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->script = $request->script;
+        $post->update();
+
+        Session::flash("message","Script Updated Successfully");
+        return redirect('addscript');
+    }
+
+	public function destroy($id)
+    {
+        $findPost = Post::find($id)->delete();
+
+        Session::flash("message","Script Deleted Successfully");
+        return redirect()->back();
+    }
 
 }

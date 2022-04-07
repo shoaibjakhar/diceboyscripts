@@ -1,7 +1,11 @@
 
 
 @include('layout/profile_header')
-
+<style type="text/css">
+    .w-5{
+        width: 20px;
+    }
+</style>
 <!--======================================
         START HERO AREA
         ======================================-->
@@ -90,8 +94,8 @@
                                                                                                         </svg>
                                                                                                 </div>
                                                                                                 <div class="media-body">
-                                                                                                        <h5 class="fw-medium">4.5/5.0</h5>
-                                                                                                        <p class="fs-15">Ratings</p>
+                                                                                                        <h5 class="fw-medium">{{count($posts)}}</h5>
+                                                                                                        <p class="fs-15">Scripts</p>
                                                                                                 </div>
                                                                                         </div>
                                                                                 </div><!-- end col-lg-4 -->
@@ -132,7 +136,7 @@
                                                                                                         </svg>
                                                                                                 </div>
                                                                                                 <div class="media-body">
-                                                                                                        <h5 class="fw-medium">11</h5>
+                                                                                                        <h5 class="fw-medium">{{$count_comments}}</h5>
                                                                                                         <p class="fs-15">Comments</p>
                                                                                                 </div>
                                                                                         </div>
@@ -156,14 +160,14 @@
                                                                         <div class="bg-gray p-3 rounded-rounded d-flex align-items-center justify-content-between">
                                                                                 <h3 class="fs-17">My Scripts <span>({{count($posts)}})</span></h3>
                                                                                 <div class="filter-option-box w-100px lh-1">
-                                                                                    <select class="select-container orderBy" name="orderBy">
+                                                                                    <!-- <select class="select-container orderBy" name="orderBy">
                                                                                         <option value="1" selected="selected">Newest </option>
                                                                                         <option value="2">Oldest</option>
                                                                                         <option value="3">A to Z</option>
                                                                                         <option value="4">Z to A </option>
                                                                                         <option value="5">High Rating</option>
                                                                                         <option value="6">Low Rating </option>
-                                                                                </select>
+                                                                                </select> -->
                                                                         </div>
                                                                 </div>
                                                                 <div class="summary-panel">
@@ -173,54 +177,43 @@
                                                                              <div class="item p-0">
                                                                                     <div class="media media-card media--card align-items-center shadow-none rounded-0 mb-0 bg-transparent">
                                                                                            <div class="votes">
-                                                                                                  <div class="vote-block d-flex align-items-center justify-content-between" title="Votes">
-                                                                                                         <span class="vote-counts">4.5</span>
-                                                                                                         <span class="vote-icon"></span>
-                                                                                                 </div>
-                                                                                                 <div class="answer-block d-flex align-items-center justify-content-between" title="Answers">
-                                                                                                         <span class="vote-counts">22</span>
-                                                                                                         <span class="answer-icon"></span>
-                                                                                                 </div>
+                                                                                                  
+                                                                                            <div class="vote-block d-flex align-items-center justify-content-between" title="Votes">
+
+                                                                                                @if($stars[$key] != 0)
+                                                                                                    <span class="vote-counts">{{$stars[$key]}}</span>
+                                                                                                    <span><i class="la la-star" style="color:orange;"></i></span>
+                                                                                                @else
+                                                                                                    <span class="vote-counts">{{$stars[$key]}}</span>
+                                                                                                    <span><i class="la la-star"></i></span>
+                                                                                                @endif
+
+                                                                                            </div>
+                                                                                            <div class="answer-block d-flex align-items-center justify-content-between" title="Comments">
+                                                                                                <span class="vote-counts">{{$comments[$key]}}</span>
+                                                                                                <span><i class="la la-comments"></i></span>
+                                                                                            </div>
                                                                                          </div>
 
 
 
                                                                                          <div class="media-body">
-                                                                                          <h5><a href="#" class="d-flex align-items-center"><!-- <span class="badge bg-12 mr-2 text-white">+100</span> --> {{$post->title}}</a></h5>
+                                                                                          <h5><a href="{{url('script',$post->id)}}" class="d-flex align-items-center"><!-- <span class="badge bg-12 mr-2 text-white">+100</span> --> {{$post->title}}</a></h5>
                                                                                           <p class="fs-15">{{$post->description}}</p>
                                                                                           <p class="fs-15">{!!$post->script!!}</p>
                                                                                           <small class="meta">
                                                                                                  <span class="pr-1">yesterday</span>
                                                                                                  <a href="#" class="author">edublog</a>
                                                                                          </small>
-                                                                                 </div>
-                                                                         </div><!-- end media -->
-                                                                 </div><!-- end item -->
-                                                                 @endforeach
-                                                         </div>
-                                                                 <div class="pager pt-30px">
-                                                                    <nav aria-label="Page navigation example">
-                                                                           <ul class="pagination generic-pagination generic--pagination">
-                                                                                  <li class="page-item">
-                                                                                         <a class="page-link" href="#" aria-label="Previous">
-                                                                                                <span aria-hidden="true"><i class="la la-arrow-left"></i></span>
-                                                                                                <span class="sr-only">Previous</span>
-                                                                                        </a>
-                                                                                </li>
-                                                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                                                                <li class="page-item">
-                                                                                 <a class="page-link" href="#" aria-label="Next">
-                                                                                        <span aria-hidden="true"><i class="la la-arrow-right"></i></span>
-                                                                                        <span class="sr-only">Next</span>
-                                                                                </a>
-                                                                        </li>
-                                                                </ul>
-                                                        </nav>
-                                                        <p class="fs-13 pt-2">Showing 1-5 of (20) results</p>
-                                                </div>
+                                                                                                                                 </div>
+                                                                                                                                 <a href="{{url('edit-script',$post->id)}}"><button class="btn border border-gray fs-17 ml-2 bg-info text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="la la-edit"></i></button></a>
+
+                                                                            <a href="{{url('delete-script',$post->id)}}"><button class="btn border border-gray fs-17 ml-2 bg-danger text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="la la-trash"></i></button></a>
+                                                                                                                         </div><!-- end media -->
+                                                                                                                 </div><!-- end item -->
+                                                                                                                 @endforeach
+                                                                                                         </div>
+                                                                 
                                         </div>
                                 </div><!-- end summary-panel -->
                         </div><!-- end user-panel -->

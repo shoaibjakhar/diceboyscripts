@@ -83,6 +83,9 @@ Route::middleware([App\Http\Middleware\RoleUser::class])->group(function(){
 
 	Route::get('addscript',[PostController::class,'userpost']);
 	Route::post('addpost',[PostController::class,'add_post']);
+	Route::get('delete-script/{id}',[PostController::class,'destroy']);
+	Route::get('edit-script/{id}',[PostController::class,'edit']);
+	Route::post('update-script',[PostController::class,'update']);
 
 	Route::post('comment',[CommentController::class,'save_comment']);
 	Route::post('rating',[RatingController::class,'index']);
