@@ -28,7 +28,7 @@ class UsersController extends Controller
 		$user_data=new User();
 		$user_data->name =$data['username'];
 		$user_data->email=$data['email'];
-		$user_data->password  =$data['password'];
+		$user_data->password  =Hash::make($data['password']);
 		$user_data->role  =2;
 		$user_data->save();
 		$request->session()->flash('success','You are register Successfuly');
@@ -46,8 +46,10 @@ class UsersController extends Controller
 		]);
 
 		//$user = User::where('email',$request->email)->where('password',$request->password)->pluck('id')->first();
-		$user = User::where('email',$request->email)->where('password',$request->password)->first();
-		if($user)
+		$user = User::where('email',$request->email)->first();
+		$checkPassword = Hash::check($request->password, $user->password);
+
+		if($checkPassword == true)
 		{
 			Session()->put('user_id',$user->id);
 			Session()->put('user_profile',$user->profile_photo_path);
@@ -61,7 +63,7 @@ class UsersController extends Controller
 
 			//  get run query dd(DB::getQueryLog());
 
-			return redirect('/');
+			return redirect('/addscript');
 		}
 		else
 		{ 
@@ -134,8 +136,9 @@ class UsersController extends Controller
 			'new_password' => 'required|max:255',
 			'password_confirmation' => 'required_with:new_password|same:new_password|min:6',
 		]);
-		$password = User::where('id',session('user_id'))->where('password',$request->password)->first();
-		if($password)
+		$password = User::where('id',session('user_id'))->first();
+		$checkPassword = Hash::check($request->password, $password->password);
+		if($checkPassword == true)
 		{
 		$user = User::find(Session('user_id'));
 		$user->update(array('password' => $request->new_password));
@@ -143,6 +146,11 @@ class UsersController extends Controller
 		$request->session()->flash('success','Your password updated Successfuly');
 
 		 return Redirect()->back();
+		}
+		else{
+			session()->flash('success','Invalid Old Password');
+
+		 	return Redirect()->back();
 		}
 	}
 
