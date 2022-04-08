@@ -8,6 +8,7 @@ use App\Models\User;
 use DB;
 use App\Models\Comment;
 use App\Models\Rating;
+use App\Models\Favorite;
 use Illuminate\Support\Facades\URL;
 use Session;
 
@@ -285,10 +286,12 @@ class PostController extends Controller
 			->orderBy('id', "DESC")
 			->get();
 		$rating = Rating::where('script_id',$q_id)->where('rating_user_id',session('user_id'))->pluck('rating')->first();
+		$favorites = Favorite::where('script_id',$q_id)->where('user_id',session('user_id'))->first();
+
 		if (empty($rating)) {
   			$rating=0;	
 		}
-		return view('frontend/question_detail_page')->with('posts',$data)->with('comments',$comment)->with('rating',$rating);
+		return view('frontend/question_detail_page')->with('posts',$data)->with('comments',$comment)->with('rating',$rating)->with('favorites',$favorites);
 	}
 
 	public function edit($id)

@@ -79,6 +79,19 @@
                   <h3 class="fs-16">{{count($comments)}} Comments</h3>
               </div><!-- end subheader-title -->
               <div class="subheader-actions d-flex align-items-center lh-1">
+               
+                     @if(!empty($favorites))
+                     <label class="fs-13 fw-regular mr-1 mb-0">Un-Favorite</label>
+                  <div class="w-100px">
+                     <a href="{{url('script-unfavorite',$posts[0]->id)}}"><i class="las la-hand-point-right" style="color:orange;"></i></a>
+                  </div>
+                     @else
+                        <label class="fs-13 fw-regular mr-1 mb-0">Favorite</label>
+                  <div class="w-100px">
+                     <a href="{{url('script-favorite',$posts[0]->id)}}"><i class="las la-hand-point-right" style="color:gray;"></i></a>
+                  </div>
+                     @endif
+
                   <label class="fs-13 fw-regular mr-1 mb-0">Rating</label>
                   <div class="w-100px">
 

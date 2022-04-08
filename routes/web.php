@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +90,9 @@ Route::middleware([App\Http\Middleware\RoleUser::class])->group(function(){
 
 	Route::post('comment',[CommentController::class,'save_comment']);
 	Route::post('rating',[RatingController::class,'index']);
+
+	Route::get('script-favorite/{script_id}',[FavoriteController::class,'store']);
+	Route::get('script-unfavorite/{script_id}',[FavoriteController::class,'destroy']);
 });
 Auth::routes();
 

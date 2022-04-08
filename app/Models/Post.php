@@ -62,6 +62,11 @@ class Post extends Authenticatable
     public function comment()
     {
         return $this->hasMany('App\Models\Comment', 'question_id', 'id');
+    } 
+
+    public function favorite()
+    {
+        return $this->hasOne('App\Models\Favorite', 'script_id', 'id');
     }  
 
 }
