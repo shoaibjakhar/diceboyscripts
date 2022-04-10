@@ -174,10 +174,13 @@ class PostController extends Controller
 		else if($request->showByorder=='3')
 		{
 			// A to Z
+			$colum='title';
+			$order='ASC';
 		}
 		else if($request->showByorder=='4')
 		{
-
+			$colum='title';
+			$order='DESC';
 		}
 		else if($request->showByorder=='5')
 		{
@@ -243,7 +246,7 @@ class PostController extends Controller
 
 		foreach($data as $key => $post)
 		{
-			$url=URL::to('questionDetail'); 
+			$url=URL::to('script',$post->id); 
 			$text.='<div class="questions-snippet">
 			<div class="media media-card media--card align-items-center">
 			<div class="votes">
@@ -257,7 +260,7 @@ class PostController extends Controller
 			</div>
 			</div>
 			<div class="media-body">
-			<h5><a href='.$url.'>'.$post->title.'</a></h5>
+			<h5><a href='.$url.'>'.substr($post->title,0,60).'</a></h5>
 			<p class="fs-10 pt-3">'.$post->description.'</p>
 			'.$post->script.'
 			<small class="meta">

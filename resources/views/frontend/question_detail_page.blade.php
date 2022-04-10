@@ -93,7 +93,7 @@
                      @endif
 
                   <label class="fs-13 fw-regular mr-1 mb-0">Rating</label>
-                  <div class="w-100px">
+                  <div class="w-100px" id="order_by_select" class="select-container orderBy" name="giveRating">
 
                   <?php 
                         switch ($rating) {

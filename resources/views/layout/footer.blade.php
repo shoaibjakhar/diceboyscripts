@@ -12,7 +12,8 @@
                         <div class="footer-item">
                             <h3 class="fs-18 fw-bold pb-2 text-white">Company</h3>
                             <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
-                                <li><a href="about.html">About</a></li>
+                                <li><a href="{{url('/')}}">Home</a></li>
+                                <li><a href="{{url('about')}}">About</a></li>
                                 <!-- <li><a href="contact.html">Contact</a></li>
                                 <li><a href="careers.html">Careers</a></li>
                                 <li><a href="advertising.html">Advertising</a></li> -->
@@ -23,7 +24,7 @@
                         <div class="footer-item">
                             <h3 class="fs-18 fw-bold pb-2 text-white">Legal Stuff</h3>
                             <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
-                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
                                 <!-- <li><a href="terms-and-conditions.html">Terms of Service</a></li>
                                     <li><a href="privacy-policy.html">Cookie Policy</a></li> -->
                                 </ul>
@@ -34,7 +35,7 @@
                                 <h3 class="fs-18 fw-bold pb-2 text-white">Help</h3>
                                 <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
                                     <!-- <li><a href="faq.html">Knowledge Base</a></li> -->
-                                    <li><a href="contact.html">Support</a></li>
+                                    <li><a href="#">Support</a></li>
                                 </ul>
                             </div><!-- end footer-item -->
                         </div><!-- end col-lg-3 -->
@@ -55,8 +56,8 @@
                 <div class="container">
                     <div class="row align-items-center pb-4 copyright-wrap">
                         <div class="col-lg-6">
-                            <a href="index.html" class="d-inline-block">
-                                <img src="images/logo-white.png" alt="footer logo" class="footer-logo">
+                            <a href="{{url('/')}}" class="d-inline-block">
+                                <img src="{{ asset('disilab/images/logo9.jpeg')}}" alt="footer logo" class="footer-logo">
                             </a>
                         </div><!-- end col-lg-6 -->
                         <div class="col-lg-6">
@@ -186,7 +187,7 @@
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox fs-14">
                                     <input type="checkbox" class="custom-control-input" id="agreeCheckBox">
-                                    <label class="custom-control-label custom--control-label" for="agreeCheckBox">By signing up, you agree to our <a href="privacy-policy.html" class="text-color hover-underline">Privacy Policy.</a></label>
+                                    <label class="custom-control-label custom--control-label" for="agreeCheckBox">By signing up, you agree to our <a href="#" class="text-color hover-underline">Privacy Policy.</a></label>
                                 </div>
                             </div>
                             <div class="btn-box">

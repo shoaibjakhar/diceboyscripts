@@ -23,10 +23,10 @@
             </div><!-- end col-lg-6 -->
             <div class="col-lg-6">
                 <div class="generic-img-box h-100">
-                    <img class="lazy" src="images/img-loading.png" data-src="images/img1.jpg" alt="image">
-                    <img class="lazy" src="images/img-loading.png" data-src="images/img2.jpg" alt="image">
-                    <img class="lazy" src="images/img-loading.png" data-src="images/img3.jpg" alt="image">
-                    <img class="lazy" src="images/img-loading.png" data-src="images/img4.jpg" alt="image">
+                    <img class="lazy" src="{{ asset('images/img-loading.png')}}" data-src="{{ asset('images/img1.jpg')}}" alt="image">
+                    <img class="lazy" src="{{ asset('images/img-loading.png')}}" data-src="{{ asset('images/img2.jpg')}}" alt="image">
+                    <img class="lazy" src="{{ asset('images/img-loading.png')}}" data-src="{{ asset('images/img3.jpg')}}" alt="image">
+                    <img class="lazy" src="{{ asset('images/img-loading.png')}}" data-src="{{ asset('images/img4.jpg')}}" alt="image">
                 </div>
             </div><!-- end col-lg-6 -->
         </div><!-- end row -->

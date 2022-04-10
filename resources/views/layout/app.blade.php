@@ -25,8 +25,8 @@
                     <div class="col-lg-2">
                      <div class="sidebar pb-45px position-sticky top-0 mt-2">
                          <ul class="generic-list-item generic-list-item-highlight fs-15">
-                           <li class="lh-26 active"><a href="home-2.html"><i class="la la-home mr-1 text-black"></i> Home</a></li>
-                           <li class="lh-26"><a href="category.html"><i class="la la-file-text mr-1 text-black"></i> All Topics</a></li>
+                           <li class="lh-26 active"><a href="{{url('/')}}"><i class="la la-home mr-1 text-black"></i> Home</a></li>
+                           <!-- <li class="lh-26"><a href="#"><i class="la la-file-text mr-1 text-black"></i> All Topics</a></li> -->
                        </ul>
                    </div><!-- end sidebar -->
                </div><!-- end col-lg-2 -->

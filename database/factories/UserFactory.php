@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
-            "profile_photo_path" => "public/images/profile/IBhKQbFZJQZyTMNnKamyYIH6cgEHCqNOSFynLqCN.jpg",
+            "profile_photo_path" => "public/images/profile/user_profile.jpg",
         ];
     }
 

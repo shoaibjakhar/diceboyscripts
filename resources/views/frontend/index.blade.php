@@ -30,7 +30,7 @@
                      <div class="sidebar pb-45px position-sticky top-0 mt-2">
                          <ul class="generic-list-item generic-list-item-highlight fs-15">
                            <li class="lh-26 active"><a href="{{url('/')}}"><i class="la la-home mr-1 text-black"></i> Home</a></li>
-                           <li class="lh-26"><a href="#"><i class="la la-file-text mr-1 text-black"></i> All Topics</a></li>
+                           <!-- <li class="lh-26"><a href="#"><i class="la la-file-text mr-1 text-black"></i> All Topics</a></li> -->
                        </ul>
                    </div><!-- end sidebar -->
                </div><!-- end col-lg-2 -->
@@ -82,11 +82,13 @@
                                             </div>
                                         </div>
                                         <div class="media-body">
-                                            <h5><a href="{{url('script/'.$post->id)}}">{{$post->title}}</a></h5>
+                                            <h5 class="fs-10 pt-3 pr-3 script-description"><a href="{{url('script/'.$post->id)}}">{{substr($post->title,0,60)}}.....</a></h5>
                                              <p class="fs-10 pt-3 script-description">{{$post->description}}</p>
+                                             <div class="fs-10 pt-3 script-description">
                                               {!!$post->script!!}
+                                          </div>
                                             <small class="meta">
-                                                <span class="pr-1">{{$post->created_at}}</span>
+                                                <span class="pr-1">{{$post->created_at->diffForHumans()}}</span>
                                                 <a class="author">{{$post->users->name}}</a>
                                             </small>
                                         </div>

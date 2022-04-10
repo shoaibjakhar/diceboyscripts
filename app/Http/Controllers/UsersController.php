@@ -47,7 +47,7 @@ class UsersController extends Controller
 
 		//$user = User::where('email',$request->email)->where('password',$request->password)->pluck('id')->first();
 		$user = User::where('email',$request->email)->first();
-		$checkPassword = Hash::check($request->password, $user->password);
+		$checkPassword = Hash::check($request->input('password'), $user->password);
 
 		if($checkPassword == true)
 		{
@@ -63,7 +63,7 @@ class UsersController extends Controller
 
 			//  get run query dd(DB::getQueryLog());
 
-			return redirect('/addscript');
+			return redirect($request->previous_url_login);
 		}
 		else
 		{ 
