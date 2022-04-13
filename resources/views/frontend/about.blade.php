@@ -1,4 +1,8 @@
-@include('layout/header')
+@if(session()->has('user_id'))
+   @include('layout/profile_header')
+@else 
+    @include('layout/header')
+@endif
 
 <!--======================================
         START HERO AREA
@@ -23,10 +27,10 @@
             </div><!-- end col-lg-6 -->
             <div class="col-lg-6">
                 <div class="generic-img-box h-100">
-                    <img class="lazy" src="{{ asset('images/img-loading.png')}}" data-src="{{ asset('images/img1.jpg')}}" alt="image">
-                    <img class="lazy" src="{{ asset('images/img-loading.png')}}" data-src="{{ asset('images/img2.jpg')}}" alt="image">
-                    <img class="lazy" src="{{ asset('images/img-loading.png')}}" data-src="{{ asset('images/img3.jpg')}}" alt="image">
-                    <img class="lazy" src="{{ asset('images/img-loading.png')}}" data-src="{{ asset('images/img4.jpg')}}" alt="image">
+                    <img class="lazy" src="{{ asset('disilab/images/img1.jpg')}}" data-src="{{ asset('disilab/images/img1.jpg')}}" alt="image">
+                    <img class="lazy" src="{{ asset('disilab/images/img2.jpg')}}" data-src="{{ asset('disilab/images/img2.jpg')}}" alt="image">
+                    <img class="lazy" src="{{ asset('disilab/images/img3.jpg')}}" data-src="{{ asset('disilab/images/img3.jpg')}}" alt="image">
+                    <img class="lazy" src="{{ asset('disilab/images/img4.jpg')}}" data-src="{{ asset('disilab/images/img4.jpg')}}" alt="image">
                 </div>
             </div><!-- end col-lg-6 -->
         </div><!-- end row -->
@@ -153,22 +157,22 @@
                 <h4 class="fs-18 pb-5 text-center text-gray">Used by thousands of organizations around the globe</h4>
                 <div class="row justify-content-center text-center">
                     <div class="client-logo-item col-lg-3 mb-2 responsive-column-half">
-                        <img src="images/client-logo.png" alt="client-logo" class="filter-gray">
+                        <img src="{{asset('disilab/images/client-logo.png')}}" alt="client-logo" class="filter-gray">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item col-lg-3 mb-2 responsive-column-half">
-                        <img src="images/client-logo-2.png" alt="client-logo" class="filter-gray">
+                        <img src="{{asset('disilab/images/client-logo-2.png')}}" alt="client-logo" class="filter-gray">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item col-lg-3 mb-2 responsive-column-half">
-                        <img src="images/client-logo-3.png" alt="client-logo" class="filter-gray">
+                        <img src="{{asset('disilab/images/client-logo-3.png')}}" alt="client-logo" class="filter-gray">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item col-lg-3 mb-2 responsive-column-half">
-                        <img src="images/client-logo-4.png" alt="client-logo" class="filter-gray">
+                        <img src="{{asset('disilab/images/client-logo-4.png')}}" alt="client-logo" class="filter-gray">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item col-lg-3 mb-2 responsive-column-half">
-                        <img src="images/client-logo-5.png" alt="client-logo" class="filter-gray">
+                        <img src="{{asset('disilab/images/client-logo-5.png')}}" alt="client-logo" class="filter-gray">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item col-lg-3 mb-2 responsive-column-half">
-                        <img src="images/client-logo-6.png" alt="client-logo" class="filter-gray">
+                        <img src="{{asset('disilab/images/client-logo-6.png')}}" alt="client-logo" class="filter-gray">
                     </div><!-- end client-logo-item -->
                 </div><!-- end row -->
             </div><!-- end client-logo-box -->
@@ -337,32 +341,32 @@
                 <div class="row justify-content-center text-center pt-50px">
                     <div class="col-lg-3 responsive-column-half">
                         <a href="#" class="client-logo-item mb-30px bg-white shadow-sm p-3 rounded-rounded d-block hover-y">
-                            <img src="images/client-logo.png" alt="client-logo">
+                            <img src="{{asset('disilab/images/client-logo.png')}}" alt="client-logo">
                         </a>
                     </div><!-- end col-lg-3 -->
                     <div class="col-lg-3 responsive-column-half">
                         <a href="#" class="client-logo-item mb-30px bg-white shadow-sm p-3 rounded-rounded d-block hover-y">
-                            <img src="images/client-logo-2.png" alt="client-logo">
+                            <img src="{{asset('disilab/images/client-logo-2.png')}}" alt="client-logo">
                         </a>
                     </div><!-- end col-lg-3 -->
                     <div class="col-lg-3 responsive-column-half">
                         <a href="#" class="client-logo-item mb-30px bg-white shadow-sm p-3 rounded-rounded d-block hover-y">
-                            <img src="images/client-logo-3.png" alt="client-logo">
+                            <img src="{{asset('disilab/images/client-logo-3.png')}}" alt="client-logo">
                         </a>
                     </div><!-- end col-lg-3 -->
                     <div class="col-lg-3 responsive-column-half">
                         <a href="#" class="client-logo-item mb-30px bg-white shadow-sm p-3 rounded-rounded d-block hover-y">
-                            <img src="images/client-logo-4.png" alt="client-logo">
+                            <img src="{{asset('disilab/images/client-logo-4.png')}}" alt="client-logo">
                         </a>
                     </div><!-- end col-lg-3 -->
                     <div class="col-lg-3 responsive-column-half">
                         <a href="#" class="client-logo-item mb-30px bg-white shadow-sm p-3 rounded-rounded d-block hover-y">
-                            <img src="images/client-logo-5.png" alt="client-logo">
+                            <img src="{{asset('disilab/images/client-logo-5.png')}}" alt="client-logo">
                         </a>
                     </div><!-- end col-lg-3 -->
                     <div class="col-lg-3 responsive-column-half">
                         <a href="#" class="client-logo-item mb-30px bg-white shadow-sm p-3 rounded-rounded d-block hover-y">
-                            <img src="images/client-logo-6.png" alt="client-logo">
+                            <img src="{{asset('disilab/images/client-logo-6.png')}}" alt="client-logo">
                         </a>
                     </div><!-- end col-lg-3 -->
                 </div><!-- end row -->
@@ -385,12 +389,12 @@
                     <h2 class="section-title fs-30 pb-3">Where we work</h2>
                     <p class="section-desc pb-4">We’re proud to be a remote first company working across many timezones, with offices in New York, London, Austin and Munich *</p>
                     <div class="btn-box pb-3">
-                        <a href="careers.html" class="btn theme-btn mr-2 mb-2">Current job openings <i class="la la-arrow-right icon ml-1"></i></a>
-                        <a href="contact.html" class="btn theme-btn theme-btn-outline theme-btn-outline-gray mb-2">Contact us <i class="la la-arrow-right icon ml-1"></i></a>
+                        <a href="#" class="btn theme-btn mr-2 mb-2">Current job openings <i class="la la-arrow-right icon ml-1"></i></a>
+                        <a href="#" class="btn theme-btn theme-btn-outline theme-btn-outline-gray mb-2">Contact us <i class="la la-arrow-right icon ml-1"></i></a>
                     </div>
                     <hr class="border-top-gray">
                     <div class="address-box d-flex pt-4">
-                        <img src="images/img-loading.png" data-src="images/illo-new-york.png" alt="Illustration of New York skyline" class="mr-4 img-fluid rounded-rounded lazy">
+                        <img src="{{asset('disilab/images/illo-new-york.png')}}" data-src="{{asset('disilab/images/illo-new-york.png')}}" alt="Illustration of New York skyline" class="mr-4 img-fluid rounded-rounded lazy">
                         <div>
                             <h5 class="mb-2 text-gray fs-18">HQ</h5>
                             <h3 class="mb-4 fs-20">New York</h3>
@@ -497,7 +501,7 @@
                     </div>
                     <div class="info-body">
                         <h3 class="fs-18 pb-4 fw-bold">Check out our FAQ about how DiceBoyScripts works</h3>
-                        <a href="faq.html" class="btn theme-btn theme-btn-sm">Get help <i class="la la-arrow-right icon ml-1"></i></a>
+                        <a href="#" class="btn theme-btn theme-btn-sm">Get help <i class="la la-arrow-right icon ml-1"></i></a>
                     </div>
                 </div><!-- end info-box -->
             </div><!-- end col-lg-4 -->
@@ -508,7 +512,7 @@
                     </div>
                     <div class="info-body">
                         <h3 class="fs-18 pb-4 fw-bold">To share feedback about our platform, please visit our meta community</h3>
-                        <a href="faq.html" class="btn theme-btn theme-btn-sm">Visit Site <i class="la la-arrow-right icon ml-1"></i></a>
+                        <a href="#" class="btn theme-btn theme-btn-sm">Visit Site <i class="la la-arrow-right icon ml-1"></i></a>
                     </div>
                 </div><!-- end info-box -->
             </div><!-- end col-lg-4 -->
@@ -519,7 +523,7 @@
                     </div>
                     <div class="info-body">
                         <h3 class="fs-18 pb-4 fw-bold">Looking for help with DiceBoyScripts for Teams?</h3>
-                        <a href="faq.html" class="btn theme-btn theme-btn-sm">Team help <i class="la la-arrow-right icon ml-1"></i></a>
+                        <a href="#" class="btn theme-btn theme-btn-sm">Team help <i class="la la-arrow-right icon ml-1"></i></a>
                     </div>
                 </div><!-- end info-box -->
             </div><!-- end col-lg-4 -->

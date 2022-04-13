@@ -19,4 +19,14 @@ class Rating extends Authenticatable
         'rating',
     ];
 
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User', 'script_user_id', 'id');
+    }
+
+    public function posts()
+    {
+        return $this->belongsToMany('App\Models\Post', 'script_id', 'id');
+    }
+
 }

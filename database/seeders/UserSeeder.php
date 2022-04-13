@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'password' => "123456", // password
             'role' => "user",
             'remember_token' => Str::random(10),
-            "profile_photo_path" => "public/images/profile/IBhKQbFZJQZyTMNnKamyYIH6cgEHCqNOSFynLqCN.jpg",
+            "profile_photo_path" => "public/images/profile/user_profile.jpg",
         ]);
 
         User::create([
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make("12345678"), // password
             'role' => "admin",
-            "profile_photo_path" => "public/images/profile/IBhKQbFZJQZyTMNnKamyYIH6cgEHCqNOSFynLqCN.jpg",
+            "profile_photo_path" => "public/images/profile/user_profile.jpg",
         ]);
     }
 }

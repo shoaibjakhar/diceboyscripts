@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use DB;
 use Hash;
+use AUth;
+use URL;
 
 class UsersController extends Controller
 {
@@ -13,63 +15,10 @@ class UsersController extends Controller
 	{
 		return view('frontend/index');
 	}
-	public function signup_view(Request $request)
-	{
-		return view('frontend/signup');
-	}
 	public function signup(Request $request)
 	{
-		$validated = $request->validate([
-			'username' => 'required',
-			'email' => 'required|unique:users|max:255',
-			'password' => 'required|max:255|min:6',
-		]);
-		$data=$request->input();
-		$user_data=new User();
-		$user_data->name =$data['username'];
-		$user_data->email=$data['email'];
-		$user_data->password  =Hash::make($data['password']);
-		$user_data->role  =2;
-		$user_data->save();
-		$request->session()->flash('success','You are register Successfuly');
-		return redirect('signup');
-	}
-	public function login_view()
-	{
-		return view('frontend/login');
-	}
-	public function login(Request $request)
-	{
-		$validated = $request->validate([
-			'email' => 'required|max:255',
-			'password' => 'required|max:255|min:6',
-		]);
-
-		//$user = User::where('email',$request->email)->where('password',$request->password)->pluck('id')->first();
-		$user = User::where('email',$request->email)->first();
-		$checkPassword = Hash::check($request->input('password'), $user->password);
-
-		if($checkPassword == true)
-		{
-			Session()->put('user_id',$user->id);
-			Session()->put('user_profile',$user->profile_photo_path);
-			Session()->put('user_name',ucfirst($user->name));
-			
-			//chech Session()->has('user_name');
-
-			// delete all session Session()->flush()
-
-			// get session  Session('user_name');
-
-			//  get run query dd(DB::getQueryLog());
-
-			return redirect($request->previous_url_login);
-		}
-		else
-		{ 
-			$request->session()->flash('error','Invalid login Details');
-			return redirect('login');
-		}
+		Session()->put("previous_url",URL::previous());
+		return view('auth/login');
 	}
 	
 	public function edit_profile()
@@ -108,7 +57,6 @@ class UsersController extends Controller
     	else
     	{
     		$user->update(array('name' => $request->username));
-    	//	dd(DB::getQueryLog());
     	}
 		Session()->put('user_name',ucfirst($user->name));
 		$request->session()->flash('success','Your profile updated Successfuly');

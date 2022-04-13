@@ -51,18 +51,10 @@ Route::middleware([App\Http\Middleware\RoleAdmin::class])->group(function(){
 	});
 });
 
-// Route::get('admin', function () {
-//     return view('Admin.layout');
-// });
-
 //   >>>>>>>>>>>>user Route<<<<<<<<<<<<<<<
 
 Route::get('about',[PostController::class,'about']);
-Route::get('login',[UsersController::class,'login_view']);
-Route::post('userlogin',[UsersController::class,'login']);
-Route::get('signup',[UsersController::class,'signup_view']);
-Route::post('usersignup',[UsersController::class,'signup']);
-// Route::get('index',[UsersController::class,'index']);
+Route::get('userlogin',[UsersController::class,'signup']);
 
 
 
@@ -93,7 +85,8 @@ Route::middleware([App\Http\Middleware\RoleUser::class])->group(function(){
 
 	Route::get('script-favorite/{script_id}',[FavoriteController::class,'store']);
 	Route::get('script-unfavorite/{script_id}',[FavoriteController::class,'destroy']);
+	Route::get('all-favorite-scripts',[FavoriteController::class,'favoriteScripts']);
 });
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

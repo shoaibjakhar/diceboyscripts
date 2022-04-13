@@ -1,5 +1,3 @@
-
-
 @if(session()->has('user_id'))
    @include('layout/profile_header')
 @else 
@@ -89,7 +87,7 @@
                                           </div>
                                             <small class="meta">
                                                 <span class="pr-1">{{$post->created_at->diffForHumans()}}</span>
-                                                <a class="author">{{$post->users->name}}</a>
+                                                <a class="author">{{$post->users->name ?? ''}}</a>
                                             </small>
                                         </div>
                                     </div>

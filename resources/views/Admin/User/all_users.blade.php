@@ -28,37 +28,13 @@
                             </div>
                             <a href="{{url('admin/edit-user',$user->id)}}"><button class="btn border border-gray fs-17 ml-2" type="button" data-placement="top" title="Edit"><i class="la la-edit"></i></button></a>
 
-                            <a href="{{url('admin/delete-user',$user->id)}}"><button class="btn border border-gray fs-17 ml-2" type="button" data-placement="top" title="Delete"><i class="la la-trash"></i></button></a>
+                            <a href="{{url('admin/delete-user',$user->id)}}"  onclick="return confirm('Do YOu want to Delete User?')"><button class="btn border border-gray fs-17 ml-2" type="button" data-placement="top" title="Delete"><i class="la la-trash"></i></button></a>
                         </div><!-- end media -->
                     @endforeach
                     @endif
 
                    
                 </div><!-- end notification-content-wrap -->
-                
-                <!-- <div class="pager pt-30px mb-50px">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination generic-pagination pr-1">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true"><i class="la la-arrow-left"></i></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true"><i class="la la-arrow-right"></i></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <p class="fs-13 pt-3">Showing 1-15 results of 210 questions</p>
-                </div> -->
             </div><!-- end col-lg-9 -->
 
         </div><!-- end row -->

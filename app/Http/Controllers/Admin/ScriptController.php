@@ -30,6 +30,7 @@ class ScriptController extends Controller
         $post->title = $request->title;
         $post->description = $request->description;
         $post->script = $request->script;
+        $post->result = $request->result;
         $post->update();
 
         Session::flash("message","Script Updated Successfully");

@@ -98,4 +98,14 @@ class FavoriteController extends Controller
 
         return redirect()->back();
     }
+
+    public function favoriteScripts()
+    {
+        $favorites = Favorite::where("user_id", Session('user_id'))
+                                ->with("posts")
+                                ->with("users")
+                                ->get();
+
+        return view("frontend.favorite_scripts",["favorites" => $favorites]);
+    }
 }

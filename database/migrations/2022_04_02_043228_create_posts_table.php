@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string("title");
             $table->text("description");
             $table->text("script");
+            $table->text("result")->nullable();
             $table->enum("status",['pending', 'approved', 'declined'])->default('pending');
             $table->timestamps();
         });

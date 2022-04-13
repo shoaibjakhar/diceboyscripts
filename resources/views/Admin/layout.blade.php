@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="{{ asset('disilab/css/selectize.css') }}">
     <link rel="stylesheet" href="{{ asset('disilab/css/style.css') }}">
     <!-- end inject -->
+
+    <link rel="stylesheet" href="{{ asset('disilab/css/jquery-te-1.4.0.css')}}">
+    <link rel="stylesheet" href="{{ asset('disilab/css/upvotejs.min.css')}}">
         <style>
         pre,.script-description{
             max-width: 91%;
@@ -49,7 +52,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2">
                         <div class="logo-box">
-                            <a href="index.html" class="logo"><img src="{{ asset('disilab/images/logo9.jpeg')}}" alt="logo"></a>
+                            <a href="{{url('/')}}" class="logo"><img src="{{ asset('disilab/images/logo9.jpeg')}}" alt="logo"></a>
                             <div class="user-action">
                                 <div class="search-menu-toggle icon-element icon-element-xs shadow-sm mr-1" data-toggle="tooltip" data-placement="top" title="Search">
                                     <i class="la la-search"></i>
@@ -242,34 +245,29 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 responsive-column-half">
-                        <div class="footer-item">
+                    <div class="footer-item">
                             <h3 class="fs-18 fw-bold pb-2 text-white">Company</h3>
                             <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="careers.html">Careers</a></li>
-                                <li><a href="advertising.html">Advertising</a></li>
+                                <li><a href="{{url('/')}}">Home</a></li>
+                                <li><a href="{{url('about')}}">About</a></li>
                             </ul>
                         </div><!-- end footer-item -->
                     </div><!-- end col-lg-3 -->
                     <div class="col-lg-3 responsive-column-half">
-                        <div class="footer-item">
+                    <div class="footer-item">
                             <h3 class="fs-18 fw-bold pb-2 text-white">Legal Stuff</h3>
                             <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
-                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                <li><a href="terms-and-conditions.html">Terms of Service</a></li>
-                                <li><a href="privacy-policy.html">Cookie Policy</a></li>
-                            </ul>
-                        </div><!-- end footer-item -->
+                                <li><a href="#">Privacy Policy</a></li>
+                                </ul>
+                            </div><!-- end footer-item -->
                     </div><!-- end col-lg-3 -->
                     <div class="col-lg-3 responsive-column-half">
-                        <div class="footer-item">
-                            <h3 class="fs-18 fw-bold pb-2 text-white">Help</h3>
-                            <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
-                                <li><a href="faq.html">Knowledge Base</a></li>
-                                <li><a href="contact.html">Support</a></li>
-                            </ul>
-                        </div><!-- end footer-item -->
+                    <div class="footer-item">
+                                <h3 class="fs-18 fw-bold pb-2 text-white">Help</h3>
+                                <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
+                                    <li><a href="#">Support</a></li>
+                                </ul>
+                            </div><!-- end footer-item -->
                     </div><!-- end col-lg-3 -->
                     <div class="col-lg-3 responsive-column-half">
                         <div class="footer-item">
@@ -288,12 +286,12 @@
             <div class="container">
                 <div class="row align-items-center pb-4 copyright-wrap">
                     <div class="col-lg-6">
-                        <a href="index.html" class="d-inline-block">
-                            <img src="images/logo-white.png" alt="footer logo" class="footer-logo">
+                        <a href="{{url('/')}}" class="d-inline-block">
+                            <img src="{{ asset('disilab/images/logo9.jpeg')}}" alt="footer logo" class="footer-logo">
                         </a>
                     </div><!-- end col-lg-6 -->
                     <div class="col-lg-6">
-                        <p class="copyright-desc text-right fs-14">Copyright &copy; 2021 <a href="https://techydevs.com/">TechyDevs</a> Inc.</p>
+                        <p class="copyright-desc text-right fs-14">Copyright &copy; 2021 <a href="https://diceboyscript.com/">DiceBoyScript</a> Inc.</p>
                     </div><!-- end col-lg-6 -->
                 </div><!-- end row -->
             </div><!-- end container -->

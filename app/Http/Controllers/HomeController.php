@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -32,6 +32,14 @@ class HomeController extends Controller
             Session()->put('user_id',auth()->user()->id);
             Session()->put('user_profile',auth()->user()->profile_photo_path);
             Session()->put('user_name',auth()->user()->name);
+            Session()->put('user_email',auth()->user()->email);
+
+            if(Session::has('previous_url')){
+                $previous = Session('previous_url');
+                Session::forget('previous_url');
+                return redirect($previous);
+            }
+
             return redirect('addscript');
         }
     }

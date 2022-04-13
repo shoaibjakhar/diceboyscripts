@@ -78,11 +78,43 @@
                             </li> -->
                         </ul><!-- end ul -->
                     </nav><!-- end main-menu -->
+                    
+                    @if(!empty(Auth::user()) && Auth::user()->email_verified_at)
+                    <div class="nav-right-button">
+                        <ul class="user-action-wrap d-flex align-items-center">
+                            <li class="dropdown user-dropdown">
+                                <a class="nav-link dropdown-toggle dropdown--toggle pl-2" href="#" id="userMenuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="media media-card media--card shadow-none mb-0 rounded-0 align-items-center bg-transparent">
+                                        <div class="media-img media-img-xs flex-shrink-0 rounded-full mr-2">
+        <img src="{{asset('storage/app/'.Auth::user()->profile_photo_path)}}" alt="avatar" class="rounded-full">
+                                        </div>
+                                        <div class="media-body p-0 border-left-0">
+                                            <h5 class="fs-14">{{Auth::user()->name}}</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown--menu dropdown-menu-right mt-3 keep-open" aria-labelledby="userMenuDropdown">
+                                    <h6 class="dropdown-header">Hi,{{Auth::user()->name}}</h6>
+                                    <div class="dropdown-divider border-top-gray mb-0"></div>
+                                    <div class="dropdown-item-list">
+                                        <a class="dropdown-item" href="{{url('admin/dashboard')}}"><i class="la la-user mr-2"></i>Dashboard</a>
+                                        <form action="{{URL::to('logout')}}" method="post">
+                                            @csrf
+                                        <a class="dropdown-item"><i class="la la-power-off mr-2"></i><button type="submit" style="background-color: white;border: none;">Logout</button></a>
+                                        </form>
+                                        <!-- <a class="dropdown-item" href="{{route('logout')}}"><i class="la la-power-off mr-2"></i>Log out</a> -->
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- end nav-right-button -->
+                    @else
 
                     <div class="nav-right-button">
                         <a href="{{url('login')}}" class="btn theme-btn theme-btn-outline mr-2"><i class="la la-sign-in mr-1"></i> Login</a>
-                        <a href="{{url('signup')}}" class="btn theme-btn"><i class="la la-user mr-1"></i> Sign up</a>
+                        <a href="{{url('register')}}" class="btn theme-btn"><i class="la la-user mr-1"></i> Sign up</a>
                     </div><!-- end nav-right-button -->
+                    @endif
                 </div><!-- end menu-wrapper -->
             </div><!-- end col-lg-10 -->
         </div><!-- end row -->

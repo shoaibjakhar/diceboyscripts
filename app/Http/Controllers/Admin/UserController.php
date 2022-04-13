@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $user_id = Auth::user()->id ?? 1;
+        $users = User::whereNotIn("id", [$user_id])->get();
 
         return view('Admin.User.all_users',["users" => $users]);
     }

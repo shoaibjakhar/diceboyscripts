@@ -73,7 +73,7 @@
                                 <a href="{{url('/')}}">Home</a>
                             </li>
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{url('about')}}">About</a>
                             </li>
                         </ul><!-- end ul -->
                     </nav><!-- end main-menu -->

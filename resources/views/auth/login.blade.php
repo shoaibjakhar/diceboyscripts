@@ -6,7 +6,7 @@
         <section class="login-area pt-80px pb-80px position-relative">
             <div class="shape-bg position-absolute top-0 left-0 w-100 h-100 opacity-2 z-index-n1"></div>
             <div class="container">
-                <form action="{{ url('userlogin') }}" class="card card-item login-form" method="post">
+                <form action="{{ route('login') }}" class="card card-item login-form" method="post">
                     @csrf                 
                     <div class="card-body row p-0">
                         <div class="col-lg-6">
@@ -27,17 +27,6 @@
                                 <strong>{{ $message }}</strong>
                             </div>
                             @endif
-                                <div class="form-group">
-                                    <input 
-                                    class="@error('previous_url_login')  is-invalid  @enderror form-control form--control" 
-                                    type="hidden" 
-                                    name="previous_url_login" 
-                                    placeholder="previous_url_login address"
-                                    value="{{URL::previous() ?? old('previous_url_login') }}">
-                                    @error('previous_url_login')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div><!-- end form-group -->
 
                                 <div class="form-group">
                                     <label class="fs-14 text-black fw-medium lh-18">Email</label>

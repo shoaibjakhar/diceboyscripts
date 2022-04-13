@@ -1,11 +1,11 @@
 @include('layout/header')
-
+{!! NoCaptcha::renderJs() !!}
 <!--======================================
         START SIGN UP AREA
         ======================================-->
         <section class="sign-up-area pt-80px pb-80px position-relative">
             <div class="container">
-                <form action="{{url('usersignup')}}" class="card card-item" method="post">
+                <form action="{{route('register')}}" class="card card-item" method="post">
                     @csrf
                     <div class="card-body row p-0">
                         <div class="col-lg-6">
@@ -30,11 +30,11 @@
                                     <label class="fs-14 text-black fw-medium lh-18">Username</label>
                                     <input id=""
                                     type="text"
-                                    name="username"
-                                    class="@error('username') is-invalid  @enderror form-control form--control"
-                                    placeholder="Username"
-                                    value="{{ old('username') }}">
-                                    @error('username')
+                                    name="name"
+                                    class="@error('name') is-invalid  @enderror form-control form--control"
+                                    placeholder="name"
+                                    value="{{ old('name') }}">
+                                    @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div> 
@@ -68,8 +68,38 @@
                                     @error('password')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    <p class="fs-13 lh-18">Passwords must contain at least 6 characters, including at l.</p>
+                                    <p class="fs-13 lh-18">Passwords must contain at least 8 characters.</p>
                                 </div><!-- end form-group -->
+
+                                <div class="form-group">
+                                    <label class="fs-14 text-black fw-medium lh-18">Confirm Password</label>
+                                    <div class="input-group mb-1">
+                                        <input 
+                                        class="@error('password_confirmation') is-invalid @enderror form-control form--control password-field" 
+                                        type="password" 
+                                        name="password_confirmation" 
+                                        placeholder="Enter Confirm Password">
+                                        <div class="input-group-append">
+                                        </div>
+                                    </div>
+                                    @error('password_confirmation')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <!-- <p class="fs-13 lh-18">Passwords must contain at least 6 characters, including at l.</p> -->
+                                </div><!-- end form-group -->
+
+                                <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Captcha</label>
+                            <div class="col-md-6">
+                                {!! app('captcha')->display() !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                                 <div class="form-group">
                                     <div class="d-flex align-items-center">
                                         <div class="custom-control custom-checkbox fs-13 mr-4">
@@ -88,7 +118,7 @@
                                 <div class="form-group">
                                     <button id="send-message-btn" class="btn theme-btn w-100" type="submit">Sign up <i class="la la-arrow-right icon ml-1"></i></button>
                                 </div><!-- end form-group -->
-                                <p class="fs-13 lh-18 pb-3">By clicking “Sign up”, you agree to our <a href="terms-and-conditions.html" class="text-color hover-underline">terms of conditions</a>, <a href="privacy-policy.html" class="text-color hover-underline">privacy policy</a></p>
+                                <p class="fs-13 lh-18 pb-3">By clicking “Sign up”, you agree to our <a href="#" class="text-color hover-underline">terms of conditions</a>, <a href="#" class="text-color hover-underline">privacy policy</a></p>
                       <!--   <div class="social-icon-box">
                             <div class="pb-3 d-flex align-items-center">
                                 <hr class="flex-grow-1 border-top-gray"><span class="mx-2 text-gray-2 fw-medium text-uppercase fs-14">or</span><hr class="flex-grow-1 border-top-gray">

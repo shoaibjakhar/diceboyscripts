@@ -15,4 +15,13 @@ class Favorite extends Model
         "user_id",
         "script_id",
     ];
+    
+    public function posts()
+    {
+        return $this->belongsTo('App\Models\Post', 'script_id', 'id');
+    } 
+    public function users()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }  
 }

@@ -184,9 +184,9 @@ class PostController extends Controller
 		}
 		else if($request->showByorder=='5')
 		{
-
+			
 		}
-		else if($request->showByorder=='5')
+		else if($request->showByorder=='6')
 		{
 
 		}
