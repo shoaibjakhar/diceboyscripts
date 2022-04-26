@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\URL;
 use Session;
 
 class ScriptController extends Controller
@@ -87,4 +88,91 @@ class ScriptController extends Controller
         Session::flash("message","Script Status Updated Successfully");
         return redirect()->back();        
     }
-}
+
+    public function scriptOrderBy(Request $request)
+    {
+        // Newest
+		// Oldest
+		// A to Z
+		// Z to A
+		$colum='id';
+		$order='DESC';
+
+		if($request->showByorder=='1')
+		{
+			// Newest
+			//->orderBy('created_at', 'ASC')
+			$colum='created_at';
+			$order='DESC';
+		}
+		else if($request->showByorder=='2')
+		{
+			// Oldest
+			//->orderBy('created_at', 'DESC')
+			$colum='created_at';
+			$order='ASC';
+			
+		}
+		else if($request->showByorder=='3')
+		{
+			// A to Z
+			$colum='title';
+			$order='ASC';
+		}
+		else if($request->showByorder=='4')
+		{
+			$colum='title';
+			$order='DESC';
+		}
+
+        $posts = Post::orderBy($colum, $order)
+				->get();
+
+                $text = '';
+                foreach($posts as $key => $post){
+                    
+                    $decline_script = URL::to('admin/decline-script-status',$post->id);
+                    $approve_script = URL::to('admin/approve-script-status',$post->id);
+                    $edit_script = URL::to('admin/edit-script',$post->id);
+                    $delete_script = URL::to('admin/delete-script',$post->id);
+
+                    $text .= '<div class="media media-card media--card shadow-none rounded-0 align-items-center bg-transparent">
+                        <div class="media-img media-img-sm flex-shrink-0">
+                            <strong>'.$key.'</strong>
+                        </div>
+                        <div class="media-body p-0 border-left-0">
+                            <h5 class="fs-14 fw-regular">'.$post->title.'</h5>
+                            <small class="meta d-block lh-24">
+                                <span>'.$post->description.'</span>
+                            </small>
+                        </div>';
+
+                        if($post->status == "approved"){
+                        $text .= '<a href="'.$decline_script.'"><button
+                                class="btn border border-gray fs-17 ml-2 bg-danger text-white" type="button"
+                                data-toggle="tooltip" data-placement="top" title="Decline"><i
+                                    class="la la-thumbs-down"></i></button></a>';
+                        }
+                        else{
+                        
+                            $text .= '<a href="'.$approve_script.'"><button
+                                class="btn border border-gray fs-17 ml-2 bg-success text-white" type="button"
+                                data-toggle="tooltip" data-placement="top" title="Approved"><i
+                                    class="la la-thumbs-up"></i></button>';
+                        }
+                        
+                        $text .= '<a href="'.$edit_script.'"><button
+                                    class="btn border border-gray fs-17 ml-2 bg-info text-white" type="button"
+                                    data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                        class="la la-edit"></i></button></a>
+
+                            <a href="'.$delete_script.'"><button
+                                    class="btn border border-gray fs-17 ml-2 bg-danger text-white" type="button"
+                                    data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                        class="la la-trash"></i></button></a>
+                    </div>';
+                }
+                echo $text;
+                }
+    }
+

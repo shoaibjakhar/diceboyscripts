@@ -36,6 +36,7 @@ Route::middleware([App\Http\Middleware\RoleAdmin::class])->group(function(){
 	Route::get('edit-user/{id}',"Admin\UserController@edit");
 	Route::post('update-user',"Admin\UserController@update");
 	Route::get('delete-user/{id}',"Admin\UserController@destroy");
+	Route::post('userOrderBy',"Admin\UserController@userOrderBy");
 
 	Route::get('all-scripts',"Admin\ScriptController@index");
 	Route::get('edit-script/{id}',"Admin\ScriptController@edit");
@@ -44,6 +45,7 @@ Route::middleware([App\Http\Middleware\RoleAdmin::class])->group(function(){
 	Route::get('pending-scripts',"Admin\ScriptController@pendingScript");
 	Route::get('approved-scripts',"Admin\ScriptController@approvedScript");
 	Route::get('declined-scripts',"Admin\ScriptController@declinedScript");
+	Route::post('scriptOrderBy',"Admin\ScriptController@scriptOrderBy");
 
 	Route::get('approve-script-status/{id}',"Admin\ScriptController@approveScriptStatus");
 	Route::get('decline-script-status/{id}',"Admin\ScriptController@declineScriptStatus");

@@ -448,17 +448,29 @@
 
         <script>
             $(document).ready(function(){
-                $('.orderBy').change(function() {
-                var showByorder=$('.orderBy').val();
-                $.ajax({
-                   type:'POST',
-                   url:'{{url('orderBy')}}',
-                   data:{_token: "{{ csrf_token() }}", showByorder:showByorder },
-                   success:function(data) {
-                         $("#question").html(data);
-                   }
-               });
-            });
+                $('.scriptOrderBy').change(function() {
+                    var showByorder=$('.scriptOrderBy').val();
+                    $.ajax({
+                       type:'POST',
+                       url:'{{url('admin/scriptOrderBy')}}',
+                       data:{_token: "{{ csrf_token() }}", showByorder:showByorder },
+                       success:function(data) {
+                         $("#all-scripts").html(data);
+                     }
+                 });
+                });
+
+                $('.userOrderBy').change(function() {
+                    var showByorder=$('.userOrderBy').val();
+                    $.ajax({
+                       type:'POST',
+                       url:'{{url('admin/userOrderBy')}}',
+                       data:{_token: "{{ csrf_token() }}", showByorder:showByorder },
+                       success:function(data) {
+                         $("#all-users").html(data);
+                     }
+                 });
+                });
             });
 
         </script>

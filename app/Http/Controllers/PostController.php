@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\post;
+use App\Models\Post;
 use App\Models\User;
 use DB;
 use App\Models\Comment;
@@ -149,31 +149,22 @@ class PostController extends Controller
 
 	public function selectBy(Request $request)
 	{
-		// Newest
-		// Oldest
-		// A to Z
-		// Z to A
 		$colum='id';
 		$order='DESC';
 
 		if($request->showByorder=='1')
 		{
-			// Newest
-			//->orderBy('created_at', 'ASC')
 			$colum='created_at';
 			$order='DESC';
 		}
 		else if($request->showByorder=='2')
 		{
-			// Oldest
-			//->orderBy('created_at', 'DESC')
 			$colum='created_at';
 			$order='ASC';
 			
 		}
 		else if($request->showByorder=='3')
 		{
-			// A to Z
 			$colum='title';
 			$order='ASC';
 		}
@@ -182,22 +173,14 @@ class PostController extends Controller
 			$colum='title';
 			$order='DESC';
 		}
-		else if($request->showByorder=='5')
-		{
-			
-		}
-		else if($request->showByorder=='6')
-		{
 
-		}
-
-		$ratings = Post::with('users')
+		$posts = Post::with('users')
 				->with('rating')
 				->orderBy($colum, $order)
 				->get();
 
 		$stars = [];
-		foreach ($ratings as $key => $value) {
+		foreach ($posts as $postDataKey => $value) {
 
 			$sum_one_star = 0;
 			$sum_two_star = 0;
@@ -233,43 +216,117 @@ class PostController extends Controller
 			if($total_score != 0 && $score != 0){
 				$average = ($total_score/$score);
 			}
-				array_push($stars, intval($average));
+				$rate = [
+							"script_id" => $value->id,
+							"average" => intval($average),
+						];
+				array_push($stars, $rate);
+			}
+			
+			
+			
+			$array_for_index = [];
+			$unset_stars_array = $stars;
+			if($request->showByorder=='5'){
+			
+				$totalItems = count($stars);
+				$max = 0;
+				$unset_star_index = 0;
+				for($i = 0; $i < $totalItems; $i++){
+					
+					foreach($unset_stars_array as $unsetStarKey => $unset_star){
+						if($max <= $unset_star['average']){
+							$max = $unset_star['average'];
+							$unset_star_index = $unsetStarKey;
+						}
+					}
+
+					unset($unset_stars_array[$unset_star_index]);
+					array_push($array_for_index, $unset_star_index);
+					$max = 0;
+				}
+			}
+			else if($request->showByorder=='6'){
+				
+				$totalItems = count($stars);
+				$min = 5;
+				$unset_star_index = 0;
+				for($i = 0; $i < $totalItems; $i++){
+					
+					foreach($unset_stars_array as $keyIndex => $star){
+						if($min >= $star['average']){
+							$min = $star['average'];
+							$unset_star_index = $keyIndex;
+						}
+					}
+					unset($unset_stars_array[$unset_star_index]);
+					array_push($array_for_index, $unset_star_index);
+					$min = 5;
+				}
 			}
 
-		$data = DB::table('posts')
-		->join('users', 'posts.user_id', '=', 'users.id')
-		->select('posts.*', 'users.name', 'users.email')
-		->orderBy($colum,$order)
-		->paginate(10);
 
 		$text='';
 
-		foreach($data as $key => $post)
+		if($request->showByorder=='5' || $request->showByorder=='6'){
+			foreach($array_for_index as $postKey => $array_rating)
+			{
+				
+				$url=URL::to('script',$posts[$array_rating]->id); 
+				$text.='<div class="questions-snippet">
+				<div class="media media-card media--card align-items-center">
+				<div class="votes">
+				<div class="vote-block d-flex align-items-center justify-content-between" title="Votes">
+				<span class="vote-counts">'.$stars[$array_rating]["average"].'</span>
+				<span class="la la-star" style="color:orange"></span>
+				</div>
+				<div class="answer-block d-flex align-items-center justify-content-between" title="Comments">
+				<span class="vote-counts">0</span>
+				<span class="la la-comments"></span>
+				</div>
+				</div>
+				<div class="media-body">
+				<h5><a href='.$url.'>'.substr($posts[$array_rating]->title,0,60).'</a></h5>
+				<p class="fs-10 pt-3">'.$posts[$array_rating]->description.'</p>
+				'.$posts[$array_rating]->script.'
+				<small class="meta">
+				<span class="pr-1">'.$posts[$array_rating]->created_at.'</span>
+				<a href="#" class="author">'.$posts[$array_rating]->name.'</a>
+				</small>
+				</div>
+				</div>
+				</div>';
+			}
+		}
+		else
 		{
-			$url=URL::to('script',$post->id); 
-			$text.='<div class="questions-snippet">
-			<div class="media media-card media--card align-items-center">
-			<div class="votes">
-			<div class="vote-block d-flex align-items-center justify-content-between" title="Votes">
-			<span class="vote-counts">'.$stars[$key].'</span>
-			<span class="la la-star" style="color:orange"></span>
-			</div>
-			<div class="answer-block d-flex align-items-center justify-content-between" title="Comments">
-			<span class="vote-counts">0</span>
-			<span class="la la-comments"></span>
-			</div>
-			</div>
-			<div class="media-body">
-			<h5><a href='.$url.'>'.substr($post->title,0,60).'</a></h5>
-			<p class="fs-10 pt-3">'.$post->description.'</p>
-			'.$post->script.'
-			<small class="meta">
-			<span class="pr-1">'.$post->created_at.'</span>
-			<a href="#" class="author">'.$post->name.'</a>
-			</small>
-			</div>
-			</div>
-			</div>';
+			foreach($posts as $postKey => $post)
+			{
+				$url=URL::to('script',$post->id); 
+				$text.='<div class="questions-snippet">
+				<div class="media media-card media--card align-items-center">
+				<div class="votes">
+				<div class="vote-block d-flex align-items-center justify-content-between" title="Votes">
+				<span class="vote-counts">'.$stars[$postKey]["average"].'</span>
+				<span class="la la-star" style="color:orange"></span>
+				</div>
+				<div class="answer-block d-flex align-items-center justify-content-between" title="Comments">
+				<span class="vote-counts">0</span>
+				<span class="la la-comments"></span>
+				</div>
+				</div>
+				<div class="media-body">
+				<h5><a href='.$url.'>'.substr($post->title,0,60).'</a></h5>
+				<p class="fs-10 pt-3">'.$post->description.'</p>
+				'.$post->script.'
+				<small class="meta">
+				<span class="pr-1">'.$post->created_at.'</span>
+				<a href="#" class="author">'.$post->name.'</a>
+				</small>
+				</div>
+				</div>
+				</div>';
+			}
 		}
 
 		echo $text;

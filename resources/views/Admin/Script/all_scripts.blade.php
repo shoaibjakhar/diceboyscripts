@@ -7,13 +7,27 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-9">
-                @if (Session::has('message'))
+            @if (Session::has('message'))
                 <div class="alert alert-success alert-block">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     <strong>{{ Session::get('message') }}</strong>
                 </div>
                 @endif
-                <div class="notification-content-wrap">
+                <div class="row mb-5">
+                        <h3 class="fs-17 fw-medium">Filter</h3>
+                        <div class="filter-option-box w-20 ml-3">
+                            <form method="post" id="script_order_by" onsubmit="return submitForm()">
+                            <select id="script_order_by_select" class="select-container scriptOrderBy" name="scriptOrderBy">
+                                    <option value="1" selected="selected">Newest </option>
+                                    <option value="2">Oldest</option>
+                                    <option value="3">A to Z</option>
+                                    <option value="4">Z to A </option>
+                                </select>
+                            </form>
+                    </div><!-- end filters -->
+                </div>
+                
+                <div class="notification-content-wrap" id="all-scripts">
                     @if(!empty($scripts))
                     @foreach($scripts as $key => $script)
                     <div class="media media-card media--card shadow-none rounded-0 align-items-center bg-transparent">

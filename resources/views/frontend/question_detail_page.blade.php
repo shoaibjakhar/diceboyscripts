@@ -2,6 +2,7 @@
    @include('layout/profile_header')
 @else 
     @include('layout/header')
+    @if(empty(Auth::user()))
     <style type="text/css">
        .question-blur {
          filter: blur(8px);
@@ -13,6 +14,7 @@
          filter: blur(8px);
          -webkit-filter: blur(8px);}
     </style>
+    @endif
 @endif
 
 <div class="ad-banner mb-4 mx-auto" style="width: 93%; height: 200px">
@@ -27,6 +29,10 @@
               <div class="question-highlight">
                  <div class="media media-card shadow-none rounded-0 mb-0 bg-transparent p-0">
                     <div class="media-body">
+                      <!--  <div class="alert alert-success alert-block" id="copy-message">-->
+                      <!--   <span id="copy-message" style="background-color: green;color:aliceblue"></span>-->
+                      <!--</div>-->
+                        
                        @if ($message = Session::get('success'))
                        <div class="alert alert-success alert-block">
                           <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -61,11 +67,11 @@
                     <div class="question-post-body-wrap flex-grow-1">
                       <div class="question-post-body">
                          <p>{{$posts[0]->description}}</p>
-                         @if(!Session::has('user_id'))
+                         @if(!Session::has('user_id') && empty(Auth::user()))
                          <center><a href="{{url('userlogin')}}"><button class="btn btn-primary">Login To View Script</button></a></center>
                          @endif
                          <div class="question-blur" id="question-blur">
-                            <a onclick="copyToClipboard()"><button style="border: none;background: none;"> Script Copy</button></a> <span id="copy-message" style="background-color: green;color:aliceblue"></span>
+                            <!--<a onclick="copyToClipboard()"><button style="border: none;background: none;"> Script Copy</button></a> <span id="copy-message" style="background-color: green;color:aliceblue"></span>-->
                          {!!$posts[0]->script!!}                   
                          </div>
 
@@ -79,6 +85,11 @@
                   <h3 class="fs-16">{{count($comments)}} Comments</h3>
               </div><!-- end subheader-title -->
               <div class="subheader-actions d-flex align-items-center lh-1">
+                  
+                  <div class="w-100px">
+                     <a onclick="copyToClipboard()" id="script-copy-button"><button style="border: none;background: none;"> Script Copy</button></a>
+                     <span id="copy-message" style="background-color: green;color:aliceblue"></span>
+                  </div>
                
                      @if(!empty($favorites))
                      <label class="fs-13 fw-regular mr-1 mb-0">Un-Favorite</label>

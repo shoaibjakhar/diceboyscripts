@@ -234,6 +234,8 @@
                  });
                 });
 
+                
+
                 $("#vote a.upvote").click(function() {
                     
                     saveRating();
